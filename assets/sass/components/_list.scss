@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -56,19 +56,11 @@
 	}
 
 	@mixin color-list($p: null) {
-		$highlight: _palette($p, highlight);
-
 		ul {
 			&.alt {
 				li {
 					border-top-color: _palette($p, border);
 				}
-			}
-		}
-
-		dl {
-			dt {
-				color: _palette($p, fg-bold);
 			}
 		}
 	}

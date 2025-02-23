@@ -5,9 +5,10 @@
 @import 'libs/breakpoints';
 @import 'libs/html-grid';
 @import 'fontawesome-all.min.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,500|Oswald:400');
 
 /*
-	Construct by Pixelarity
+	Formula by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -19,7 +20,8 @@
 		large:    ( 981px,   1280px ),
 		medium:   ( 737px,   980px  ),
 		small:    ( 481px,   736px  ),
-		xsmall:   ( null,    480px  ),
+		xsmall:   ( 361px,   480px  ),
+		xxsmall:  ( null,    360px  )
 	));
 
 // Mixins.
@@ -30,11 +32,10 @@
 		@include color-button($p);
 		@include color-form($p);
 		@include color-list($p);
-		@include color-icons($p);
 		@include color-section($p);
 		@include color-table($p);
+		@include color-spotlight($p);
 		@include color-features($p);
-		@include color-spotlights($p);
 	}
 
 // Base.
@@ -56,14 +57,15 @@
 	@import 'components/icons';
 	@import 'components/section';
 	@import 'components/table';
-	@import 'components/highlights';
+	@import 'components/spotlight';
 	@import 'components/features';
-	@import 'components/spotlights';
-	@import 'components/wrapper';
 
 // Layout.
 
-	@import 'layout/banner';
 	@import 'layout/header';
-	@import 'layout/main';
+	@import 'layout/menu';
+	@import 'layout/banner';
+	@import 'layout/cta';
 	@import 'layout/footer';
+	@import 'layout/wrapper';
+	@import 'layout/page-wrapper';

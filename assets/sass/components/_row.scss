@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -7,10 +7,10 @@
 /* Row */
 
 	.row {
-		@include html-grid(1.5em);
+		@include html-grid(2em);
 
 		@include breakpoint('<=xlarge') {
-			@include html-grid(1.5em, 'xlarge');
+			@include html-grid(2em, 'xlarge');
 		}
 
 		@include breakpoint('<=large') {

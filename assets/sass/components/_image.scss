@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -55,6 +55,10 @@
 
 			img {
 				width: 100%;
+			}
+
+			@include breakpoint('<=small') {
+				margin: 0 0 _size(element-margin) 0;
 			}
 		}
 	}

@@ -1,68 +1,96 @@
 ///
-/// Construct by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
-/* Feature */
+/* Features */
 
 	.features {
 		@include vendor('display', 'flex');
 		@include vendor('flex-wrap', 'wrap');
-		border-bottom: solid _size(border-width);
-		border-left: solid _size(border-width);
-		margin: 0 0 _size(element-margin) 0;
+		border: solid 2px;
+		border-radius: _size(border-radius);
+		margin: (_size(element-margin) * 1.75) 0 (_size(element-margin) * 1.75) 0;
 
-		> section {
+		> * {
 			@include padding(4em, 4em);
-			border-right: solid _size(border-width);
-			border-top: solid _size(border-width);
+			border-left: solid 2px;
+			border-top: solid 2px;
 			width: 50%;
 
 			.icon {
-				margin-bottom: _size(element-margin);
+				@include vendor('transition', (
+					'transform #{_duration(features)} ease',
+					'opacity #{_duration(features)} ease'
+				));
+			}
+		}
 
-				&:before {
-					font-size: 3em;
+		> :nth-child(1) {
+			border-top-width: 0;
+		}
+
+		> :nth-child(2) {
+			border-top-width: 0;
+		}
+
+		> :nth-child(2n - 1) {
+			border-left-width: 0;
+		}
+
+		@for $i from 1 through _misc(max-features) {
+			> :nth-child(#{$i}) {
+				.icon {
+					@include vendor('transition-delay', '#{(_duration(transition) * 0.75 * $i)}');
 				}
 			}
+		}
 
-			h3 {
-				margin-bottom: (_size(element-margin) * 0.35);
+		&.inactive {
+			> * {
+				.icon {
+					@include vendor('transform', 'scale(0.9) rotate(45deg)');
+					opacity: 0;
+				}
 			}
 		}
 
 		@include breakpoint('<=medium') {
-			> section {
-				@include padding(2em, 2em);
+			> * {
+				@include padding(4em, 2em);
 			}
 		}
 
 		@include breakpoint('<=small') {
-			margin: _size(element-margin) 0;
+			margin: _size(element-margin) 0 _size(element-margin) 0;
+
+			> * {
+				@include padding(2em, 1em);
+			}
 		}
 
 		@include breakpoint('<=xsmall') {
-			> section {
+			@include vendor('flex-direction', 'column');
+			@include vendor('flex-wrap', 'nowrap');
+
+			> * {
 				width: 100%;
+				border-left-width: 0;
+			}
+
+			> :nth-child(2) {
+				border-top-width: 2px;
 			}
 		}
 	}
 
 	@mixin color-features($p: null) {
-		$highlight: _palette($p, highlight);
-
 		.features {
 			border-color: _palette($p, border);
 
-			> section {
+			> * {
 				border-color: _palette($p, border);
-
-				.icon {
-					&:before {
-						color: _palette($highlight, bg);
-					}
-				}
 			}
 		}
 	}

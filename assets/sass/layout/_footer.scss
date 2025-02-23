@@ -1,5 +1,5 @@
 ///
-/// Construct by Pixelarity
+/// Formula by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -7,48 +7,29 @@
 /* Footer */
 
 	#footer {
-		@include padding(6em, 2em);
+		$main-pad: _size(main-pad);
+
+		@include padding($main-pad, 0);
+		background-color: _palette(bg-alt);
 		text-align: center;
+
+		> .inner {
+			margin: 0 auto;
+			max-width: calc(100% - 4em);
+			width: _size(inner-width);
+		}
 
 		.copyright {
 			color: _palette(fg-light);
-			font-size: 0.9em;
-			margin: 0 0 _size(element-margin) 0;
-			padding: 0;
-
-			li {
-				border-left: solid _size(border-width) _palette(border);
-				display: inline-block;
-				list-style: none;
-				margin-left: 1.5em;
-				padding-left: 1.5em;
-
-				&:first-child {
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
-			}
+			font-size: 0.8em;
 		}
 
 		@include breakpoint('<=small') {
-			@include padding(4em, 2em);
+			$main-pad: _size(main-pad) * 0.75;
 
-			.icons {
-				margin-bottom: (_size(element-margin) * 0.75);
-			}
-
-			.copyright {
-				li {
-					display: block;
-					border-left: 0;
-					margin-left: 0;
-					padding-left: 0;
-				}
-			}
+			@include padding($main-pad, 0);
 		}
 
 		@include breakpoint('<=xsmall') {
-			@include padding(3em, 2em);
 		}
 	}

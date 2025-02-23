@@ -1,5 +1,5 @@
 /*
-	Construct by Pixelarity
+	Formula by Pixelarity
 	pixelarity.com | hello@pixelarity.com
 	License: pixelarity.com/license
 */
@@ -15,7 +15,8 @@
 			large:    [ '981px',   '1280px' ],
 			medium:   [ '737px',   '980px'  ],
 			small:    [ '481px',   '736px'  ],
-			xsmall:   [ null,      '480px'  ]
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -25,32 +26,103 @@
 			}, 100);
 		});
 
-	// Fix: Enable IE flexbox workarounds.
-		if (browser.name == 'ie')
-			$body.addClass('is-ie');
+	// Menu.
+		$('#menu')
+			.append('<a href="#menu" class="close"></a>')
+			.appendTo($body)
+			.panel({
+				visibleClass: 'is-menu-visible',
+				target: $body,
+				delay: 500,
+				hideOnClick: true,
+				hideOnSwipe: true,
+				resetScroll: true,
+				resetForms: true,
+				side: 'right'
+			});
+
+	// Banner.
+		var $banner = $('#banner'),
+			$header = $('#header');
+
+		if ($banner.length > 0) {
+
+			// IE: Height fix.
+				if (browser.name == 'ie') {
+
+					breakpoints.on('>small', function() {
+						$banner.css('height', '100vh');
+					});
+
+					breakpoints.on('<=small', function() {
+						$banner.css('height', '');
+					});
+
+				}
+
+			// More button.
+				$banner.find('.more')
+					.addClass('scrolly');
+
+			// Header.
+				$header
+					.addClass('with-banner')
+					.addClass('alt');
+
+				$banner.scrollex({
+					mode: 'top',
+					top: '-100vh',
+					bottom: 10,
+					enter: function() { $header.addClass('alt'); },
+					leave: function() { $header.removeClass('alt'); }
+				});
+
+		}
+
+	// Spotlights.
+		var $spotlight = $('.spotlight');
+
+		if ($spotlight.length > 0
+		&&	browser.canUse('transition'))
+			$spotlight.each(function() {
+
+				var $this = $(this);
+
+				$this.scrollex({
+					mode: 'middle',
+					top: '-10vh',
+					bottom: '-10vh',
+					initialize: function() { $this.addClass('inactive'); },
+					enter: function() { $this.removeClass('inactive'); }
+				});
+
+			});
+
+	// Features.
+		var $features = $('.features');
+
+		if ($features.length > 0
+		&&	browser.canUse('transition'))
+			$features.each(function() {
+
+				var $this = $(this);
+
+				$this.scrollex({
+					mode: 'middle',
+					top: '-20vh',
+					bottom: '-20vh',
+					initialize: function() { $this.addClass('inactive'); },
+					enter: function() { $this.removeClass('inactive'); }
+				});
+
+			});
 
 	// Scrolly.
 		$('.scrolly').scrolly();
 
-	// Highlights.
-		$('.highlights > section')
-			.each(function() {
-
-				var	$this = $(this),
-					$image = $this.find('.image'),
-					$img = $image.find('img'),
-					x;
-
-				// Assign image.
-					$image.css('background-image', 'url(' + $img.attr('src') + ')');
-
-				// Set background position.
-					if (x = $img.data('position'))
-						$image.css('background-position', x);
-
-				// Hide <img>.
-					$img.hide();
-
-			});
+	// Initial scroll.
+		$window.on('load', function() {
+			$window.trigger('scroll');
+		});
 
 })(jQuery);
