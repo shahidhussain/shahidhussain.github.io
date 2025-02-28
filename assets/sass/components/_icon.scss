@@ -1,5 +1,5 @@
 ///
-/// Formula by Pixelarity
+/// Story by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -16,6 +16,10 @@
 			display: none;
 		}
 
+		&:before {
+			line-height: inherit;
+		}
+
 		&.solid {
 			&:before {
 				font-weight: 900;
@@ -28,107 +32,65 @@
 			}
 		}
 
-		&.major {
-			cursor: default;
-			display: block;
-			margin: 0 0 (_size(element-margin) * 0.75) 0;
-
+		&.style2 {
 			&:before {
-				background-color: _palette(fg-bold);
-				border-radius: 100%;
-				color: _palette(bg);
+				border-radius: 2.75em;
 				display: inline-block;
-				font-size: 2.5rem;
-				height: 2.25em;
-				line-height: 2.25em;
-				text-align: center;
-				width: 2.25em;
-			}
-
-			&.style1 {
-				&:before {
-					background-color: _palette(accent1, bg);
-					color: _palette(accent1, fg-bold);
-				}
-			}
-
-			&.style2 {
-				&:before {
-					background-color: _palette(accent2, bg);
-					color: _palette(accent2, fg-bold);
-				}
-			}
-
-			&.style3 {
-				&:before {
-					background-color: _palette(accent3, bg);
-					color: _palette(accent3, fg-bold);
-				}
-			}
-
-			&.style4 {
-				&:before {
-					background-color: _palette(accent4, bg);
-					color: _palette(accent4, fg-bold);
-				}
+				height: 2.75em;
+				line-height: 2.75em;
+				width: 2.75em;
 			}
 		}
 
-		&.alt {
+		&.major {
+			display: block;
+			margin: 0 0 (_size(element-margin) * 0.5) 0;
+
 			&:before {
-				@include vendor('transition', 'background-color #{_duration(transition)} ease-in-out, color #{_duration(transition)} ease-in-out');
-				background-color: _palette(accent1, bg);
-				border-radius: 100%;
-				color: _palette(accent1, fg-bold);
-				display: inline-block;
-				font-size: 1.5rem;
-				height: 2.25em;
-				line-height: 2.25em;
-				text-align: center;
-				width: 2.25em;
+				font-size: 1.25rem;
 			}
+		}
+	}
 
-			&:hover {
-				&:before {
-					background-color: darken(_palette(accent1, bg), 5);
-				}
+	a.icon {
+		&.style2 {
+			&:before {
+				@include vendor('transition', (
+					'background-color #{_duration(transition)} ease-in-out',
+					'box-shadow #{_duration(transition)} ease-in-out',
+					'color #{_duration(transition)} ease-in-out'
+				));
 			}
+		}
+	}
 
-			&:active {
-				&:before {
-					background-color: darken(_palette(accent1, bg), 15);
-				}
-			}
+	@mixin color-icon($p: null) {
+ 		.icon {
+ 			&.style2 {
+ 				&:before {
+					box-shadow: inset 0 0 0 _size(border-width) _palette($p, border);
+ 				}
+ 			}
+ 		}
 
-			@mixin icon-alt($x, $y) {
-				&.#{$x} {
+		a.icon {
+			&.style2 {
+				&:hover {
 					&:before {
-						background-color: _palette($y);
-					}
-
-					&:hover {
-						&:before {
-							background-color: darken(_palette($y), 5);
-						}
-					}
-
-					&:active {
-						&:before {
-							background-color: darken(_palette($y), 15);
-						}
+						box-shadow: inset 0 0 0 _size(border-width) _palette($p, accent);
+						color: _palette($p, accent);
 					}
 				}
-			}
 
-			@include icon-alt(fa-twitter, twitter);
-			@include icon-alt(fa-facebook, facebook);
-			@include icon-alt(fa-youtube, youtube);
-			@include icon-alt(fa-instagram, instagram);
-
-			@include breakpoint('<=small') {
-				&:before {
-					font-size: 1rem;
+				&:active {
+					&:before {
+						background-color: transparentize(_palette($p, accent), 0.9);
+						box-shadow: inset 0 0 0 _size(border-width) _palette($p, accent);
+						color: _palette($p, accent);
+					}
 				}
 			}
 		}
 	}
+
+	@include color-icon;

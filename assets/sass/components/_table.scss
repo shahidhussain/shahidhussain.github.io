@@ -1,5 +1,5 @@
 ///
-/// Formula by Pixelarity
+/// Story by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -8,7 +8,12 @@
 
 	.table-wrapper {
 		-webkit-overflow-scrolling: touch;
+		margin: 0 0 _size(element-margin) 0;
 		overflow-x: auto;
+
+		> table {
+			margin-bottom: 0;
+		}
 	}
 
 	table {
@@ -24,13 +29,13 @@
 		}
 
 		td {
-			padding: 0.75em 0.75em;
+			padding: 0.75rem 0.75rem;
 		}
 
 		th {
-			font-size: 0.9em;
+			font-size: 0.9rem;
 			font-weight: _font(weight-bold);
-			padding: 0 0.75em 0.75em 0.75em;
+			padding: 0 0.75rem 0.75rem 0.75rem;
 			text-align: left;
 		}
 
@@ -73,6 +78,10 @@
 				border-top: 0;
 			}
 		}
+
+		&.fixed {
+			table-layout: fixed;
+		}
 	}
 
 	@mixin color-table($p: null) {
@@ -83,6 +92,10 @@
 
 					&:nth-child(2n + 1) {
 						background-color: _palette($p, border-bg);
+					}
+
+					&.alt {
+						background-color: _palette($p, border-bg) !important;
 					}
 				}
 			}
@@ -104,6 +117,16 @@
 					tr {
 						td {
 							border-color: _palette($p, border);
+						}
+					}
+				}
+			}
+
+			&.uniform {
+				tbody {
+					tr {
+						&:nth-child(2n + 1) {
+							background-color: transparent;
 						}
 					}
 				}
