@@ -3677,7 +3677,7 @@ input, select, textarea {
 /*	body {
 		padding-top: 3.5rem;
 	}
-*/
+
 		@media screen and (max-width: 736px) {
 
 			body {
@@ -3685,6 +3685,7 @@ input, select, textarea {
 			}
 
 		}
+*/
 
 	#header {
 		background-color: #3a3a3a;
