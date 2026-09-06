@@ -66,13 +66,12 @@ plugins:
 # ----------------------------------------------------------------------------
 #  URLs.
 #
-#  Essays live in _posts/ and are published under /writing/<slug>/.
-#  This pattern is set EXPLICITLY rather than using a built-in shorthand like
-#  `permalink: pretty`, so that the URL shape can never silently change when
-#  Jekyll's defaults change. Existing pages set their own `permalink` in front
-#  matter, so none of them are affected by this line.
+#  Every page sets its own `permalink` in front matter, so URLs are explicit
+#  and cannot drift with Jekyll's defaults.
+#
+#  NOTE: the /writing/ essay section was removed for now. To bring it back,
+#  see the "Restoring the writing section" note in README.md.
 # ----------------------------------------------------------------------------
-permalink: /writing/:title/
 
 # ----------------------------------------------------------------------------
 #  Default front matter, applied by path. This is what lets each page file
@@ -87,13 +86,6 @@ defaults:
       path: "zoe-and-zephy/assets/zzpresskit.pdf"
     values:
       sitemap: false
-
-  # Every post in _posts/ is an essay unless it says otherwise.
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "essay"
 
 # ----------------------------------------------------------------------------
 #  Excluded from the built site. These are development files that must never

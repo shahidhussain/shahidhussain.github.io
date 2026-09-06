@@ -38,8 +38,9 @@
 
           Two cases:
             - an exact URL match (e.g. /zoe-and-zephy/ while on that page), or
-            - a section match, so that an essay at /writing/some-essay/ still
-              highlights the "Writing" nav item.
+            - a section match, so that a page nested under a nav item's URL
+              (e.g. /section/a-page/ under a "/section/" nav entry) still
+              highlights that nav item.
           The `item.url != '/'` guard is essential: every URL on the site
           contains "/", so without it the Home link would always highlight.
         {%- endcomment -%}
