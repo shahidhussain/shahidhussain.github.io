@@ -7,30 +7,28 @@
 
    This file loads after main.css (see _includes/head.html), so anything here
    wins on equal specificity.
+
+   The aim is to stay as close to the stock theme as possible. There is
+   currently one override, explained below.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Homepage banner image.
+   Spotlight images: force a square crop so the theme's circles are circles.
 
-   Stock Hyperbolic hardcodes its own demo photo (images/banner.jpg) as the
-   #banner background, in two places: once for desktop and once inside a
-   max-width:980px media query for mobile. Both are overridden here to use the
-   site's own portrait, preserving the identical dark gradient the theme lays
-   over the top so the white banner text stays legible.
+   Hyperbolic styles spotlight images with `border-radius: 100%` and assumes a
+   SQUARE source image. The work images here are 1440x900 landscape, so the
+   circular mask stretched them into ovals.
+
+   Rather than abandon the theme's circular design, this crops each image to a
+   1:1 box and lets `object-fit: cover` fill it from the centre — which is what
+   a square source would have produced. The theme's own sizing, shadow, mask
+   and alternating left/right layout are all untouched.
    -------------------------------------------------------------------------- */
 
-#banner {
-	background-image:
-		linear-gradient(90deg, rgba(58, 58, 58, 0.6), rgba(58, 58, 58, 0.6)),
-		url("../../images/bannerme.jpg");
-}
-
-@media screen and (max-width: 980px) {
-
-	#banner {
-		background-image:
-			linear-gradient(90deg, rgba(58, 58, 58, 0.6), rgba(58, 58, 58, 0.6)),
-			url("../../images/bannerme.jpg");
-	}
-
+.spotlights section .image img {
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	/* object-position defaults to centre; adjust per-image here if a particular
+	   crop cuts off something important, e.g.
+	   .spotlights section:nth-child(3) .image img { object-position: center 30%; } */
 }
