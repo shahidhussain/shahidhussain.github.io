@@ -32,3 +32,34 @@
 	   crop cuts off something important, e.g.
 	   .spotlights section:nth-child(3) .image img { object-position: center 30%; } */
 }
+
+/* --------------------------------------------------------------------------
+   Spotlight spacing.
+
+   The theme sets `margin-top: -3rem` on each spotlight so adjacent circles
+   interlock slightly. That is tuned for the demo's one-line blurbs; the copy
+   here runs to a full paragraph per item, so the same negative margin leaves
+   the rows looking cramped against each other.
+
+   Replaced with positive separation. This is a deliberate, minimal departure
+   from stock: everything else about the component - the circles, sizing,
+   shadow and the alternating left/right rhythm - is untouched.
+   -------------------------------------------------------------------------- */
+
+.spotlights section {
+	margin-top: 5rem;
+}
+
+	/* No leading gap on the first one; it already sits below the section header. */
+	.spotlights section:first-child {
+		margin-top: 0;
+	}
+
+@media screen and (max-width: 980px) {
+
+	/* Stacked layout: image above copy, so the rows need less separation. */
+	.spotlights section {
+		margin-top: 4rem;
+	}
+
+}
