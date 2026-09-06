@@ -4,12 +4,12 @@
 #  URL can never drift, whatever Jekyll's defaults do.
 #
 #  Uses `layout: default` rather than `layout: page` because it supplies its
-#  own <section> markup (a banner plus spotlights), which the generic page
-#  wrapper would otherwise duplicate.
+#  own section markup, which the generic page wrapper would duplicate.
 #
 #  `banner: true` tells _includes/header.html to render the transparent
-#  header style that sits over the banner image. It must stay paired with the
-#  <section id="banner"> below: the theme's JS looks for that id.
+#  header that sits over the banner, which is how the stock theme's homepage
+#  works. It must stay paired with the banner section in the body below,
+#  because the theme's JS looks for an element with id="banner".
 # ============================================================================
 layout: default
 permalink: /
@@ -18,28 +18,19 @@ description: "I work on no-BS tech strategy, product development and marketing."
 banner: true
 ---
 
-<!-- Banner: the page's single <h1>. -->
+<!-- Banner: the page's single <h1>. Stock Hyperbolic markup and styling:
+     centred content over the theme's banner image. -->
 <section id="banner">
 	<div class="content">
-
-		<!-- Portrait first in the flex row, but rendered to the right on desktop
-		     and above the text on narrow screens (see custom.css). -->
-		<div class="banner-text">
-			<header class="major special">
-				<h1>Shahid Hussain</h1>
-			</header>
-			<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
-			<ul class="actions special">
-				<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary wide">Find me on LinkedIn</a></li>
-				<!-- `scrolly` is Hyperbolic's smooth-scroll hook, wired up in assets/js/main.js. -->
-				<li><a href="#first" class="button wide scrolly">Find out more</a></li>
-			</ul>
-		</div>
-
-		<div class="banner-portrait">
-			<img src="{{ '/images/bannerme.jpg' | relative_url }}" alt="Shahid Hussain" />
-		</div>
-
+		<header class="major special">
+			<h1>Shahid Hussain</h1>
+		</header>
+		<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
+		<ul class="actions special">
+			<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary wide">Find me on LinkedIn</a></li>
+			<!-- `scrolly` is Hyperbolic's smooth-scroll hook, wired up in assets/js/main.js. -->
+			<li><a href="#first" class="button wide scrolly">Find out more</a></li>
+		</ul>
 	</div>
 </section>
 

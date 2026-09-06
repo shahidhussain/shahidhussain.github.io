@@ -7,198 +7,28 @@
 
    This file loads after main.css (see _includes/head.html), so anything here
    wins on equal specificity.
+
+   The aim is to stay as close to the stock theme as possible. There is
+   currently one override, explained below.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Homepage banner.
+   Spotlight images: force a square crop so the theme's circles are circles.
 
-   images/bannerme.jpg is a COMPOSED image: a circular headshot on a soft
-   blurred backdrop, with wide empty margins. It was made for the previous
-   theme's split banner, where text sat on the left and this image beside it.
+   Hyperbolic styles spotlight images with `border-radius: 100%` and assumes a
+   SQUARE source image. The work images here are 1440x900 landscape, so the
+   circular mask stretched them into ovals.
 
-   Hyperbolic's banner centres text over a full-bleed `cover` background, which
-   put the headline straight across the face. Repositioning the background does
-   not fix it reliably either: the source is exactly 1440x900, so how `cover`
-   crops it — and therefore where the circular portrait lands — changes with
-   every viewport width. It looked fine at 1440px and broke at 1920px.
-
-   So the portrait is no longer a background at all. It is a real <img> beside
-   the text, which is the layout it was designed for, and the banner gets the
-   theme's own gradient behind it. This is stable at any width.
+   Rather than abandon the theme's circular design, this crops each image to a
+   1:1 box and lets `object-fit: cover` fill it from the centre — which is what
+   a square source would have produced. The theme's own sizing, shadow, mask
+   and alternating left/right layout are all untouched.
    -------------------------------------------------------------------------- */
 
-#banner {
-	/* The theme's brand gradient, matching the transparent header treatment. */
-	background-color: #4797ec;
-	background-image: linear-gradient(90deg, #4797ec 0%, #884beb 100%);
-	background-attachment: scroll;
-}
-
-	/* Text and portrait side by side, centred as a pair in the content column. */
-	#banner .content {
-		box-sizing: border-box;
-		width: 100%;
-		max-width: 78rem;
-		margin: 0 auto;
-		padding: 0 3rem;
-		text-align: left;
-		display: -webkit-flex;
-		display: -ms-flex;
-		display: flex;
-		-webkit-align-items: center;
-		-ms-align-items: center;
-		align-items: center;
-		gap: 4rem;
-	}
-
-		/* Text column takes the free space; portrait keeps its fixed size. */
-		#banner .content > .banner-text {
-			-webkit-flex: 1 1 auto;
-			-ms-flex: 1 1 auto;
-			flex: 1 1 auto;
-			min-width: 0;
-		}
-
-		/* The theme centres `header.major.special`; align it with the rest of
-		   the left-hand column, including the gradient rule under the h1. */
-		#banner .content header.major.special {
-			text-align: left;
-		}
-
-		#banner .content header.major.special h1:after {
-			margin-left: 0;
-			margin-right: auto;
-		}
-
-		#banner .content .actions {
-			-webkit-justify-content: flex-start;
-			-ms-justify-content: flex-start;
-			justify-content: flex-start;
-		}
-
-	/* Circular portrait.
-
-	   The headshot occupies only the middle ~30% of the source image, so the
-	   <img> is scaled up inside a round, clipping container to crop in on the
-	   face rather than showing a small circle ringed by blurred backdrop. */
-	.banner-portrait {
-		-webkit-flex: 0 0 auto;
-		-ms-flex: 0 0 auto;
-		flex: 0 0 auto;
-		width: 22rem;
-		height: 22rem;
-		border-radius: 100%;
-		overflow: hidden;
-		box-shadow: 0 1rem 3rem 0 rgba(0, 0, 0, 0.25);
-	}
-
-		.banner-portrait img {
-			display: block;
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transform: scale(2.05);
-		}
-
-@media screen and (max-width: 980px) {
-
-	/* Not enough width for two columns: stack them, portrait above the
-	   headline. Staying in flex (rather than switching to block) lets `order`
-	   lift the portrait above the text without reordering the markup, which
-	   keeps the h1 first in the document for screen readers and search
-	   engines. */
-	#banner .content {
-		-webkit-flex-direction: column;
-		-ms-flex-direction: column;
-		flex-direction: column;
-		text-align: center;
-		padding: 0 2rem;
-		gap: 0;
-	}
-
-		.banner-portrait {
-			-webkit-order: -1;
-			-ms-order: -1;
-			order: -1;
-		}
-
-		#banner .content header.major.special {
-			text-align: center;
-		}
-
-		#banner .content header.major.special h1:after,
-		#banner .content .actions {
-			margin-left: auto;
-			margin-right: auto;
-		}
-
-		#banner .content .actions {
-			-webkit-justify-content: center;
-			-ms-justify-content: center;
-			justify-content: center;
-		}
-
-	.banner-portrait {
-		width: 15rem;
-		height: 15rem;
-		margin: 0 auto 2.5rem auto;
-	}
-
-}
-
-/* --------------------------------------------------------------------------
-   FIX: "Selected work" spotlights.
-
-   Two faults, both caused by feeding this component content it was not
-   designed for:
-
-   1. ELLIPSES. Hyperbolic's spotlight images are styled `border-radius: 100%`,
-      which only produces a circle when the source image is square. The work
-      images are 1440x900 landscape, so they rendered as stretched ovals — and
-      a circular crop would in any case cut the edges off screenshots and
-      logo artwork, where the edges carry the meaning.
-
-   2. OVERLAP. The theme pulls each spotlight up with `margin-top: -3rem` so
-      that adjacent circles interlock slightly. That assumes the short blurbs
-      of the demo; against real multi-paragraph copy the next heading was
-      drawn on top of the previous image.
-
-   Fix: present the images as rounded rectangles at their natural aspect ratio,
-   and replace the negative margin with positive spacing. The alternating
-   left/right rhythm of the component is untouched.
-   -------------------------------------------------------------------------- */
-
-.spotlights section .image {
-	/* Rectangular with soft corners, rather than a circular mask. */
-	border-radius: 0.5rem;
-	/* The theme fixes the width and lets height follow the aspect ratio, which
-	   is what we want now that the shape is no longer forced to a circle. */
-	overflow: hidden;
-}
-
-	.spotlights section .image img {
-		border-radius: 0;
-		display: block;
-		width: 100%;
-		height: auto;
-	}
-
-/* Positive separation between spotlights instead of the theme's deliberate
-   -3rem interlock, which only works with very short copy. */
-.spotlights section {
-	margin-top: 4rem;
-}
-
-	.spotlights section:first-child {
-		margin-top: 0;
-	}
-
-@media screen and (max-width: 980px) {
-
-	/* Stacked layout: the image sits above the copy, so it needs breathing
-	   room below it rather than beside it. */
-	.spotlights section {
-		margin-top: 3rem;
-	}
-
+.spotlights section .image img {
+	aspect-ratio: 1 / 1;
+	object-fit: cover;
+	/* object-position defaults to centre; adjust per-image here if a particular
+	   crop cuts off something important, e.g.
+	   .spotlights section:nth-child(3) .image img { object-position: center 30%; } */
 }
