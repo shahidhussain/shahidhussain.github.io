@@ -1,0 +1,72 @@
+{%- comment -%}
+  _includes/header.html — the site header and nav, rendered on EVERY page.
+
+  The links themselves are NOT hardcoded here. They come from
+  _data/navigation.yml, so adding or renaming a nav item means editing that
+  one YAML file. This template only decides how the links are drawn.
+
+  Two Hyperbolic behaviours worth understanding:
+
+  1. THE `alt` CLASS. Hyperbolic has two header styles. Pages with a full-
+     bleed banner use `<section id="header" class="alt">`, which renders the
+     header transparent and overlaid on the banner; assets/js/main.js then
+     swaps it to the solid style once you scroll past the banner. Pages
+     WITHOUT a banner use a plain solid header. A page opts into the banner
+     style by setting `banner: true` in its front matter.
+     Note main.js only activates this if an element with id="banner" also
+     exists on the page, so `banner: true` and an actual banner section must
+     go together.
+
+  2. THE MOBILE MENU IS AUTOMATIC. There is deliberately no mobile markup
+     here. assets/js/main.js reads this <nav id="nav"> list and generates the
+     slide-out panel and its toggle button from it at runtime. Anything added
+     to navigation.yml therefore appears in the mobile menu for free.
+{%- endcomment -%}
+
+<section id="header"{% if page.banner %} class="alt"{% endif %}>
+
+  {%- comment -%} Logo doubles as the home link, matching the stock theme. {%- endcomment -%}
+  <a href="{{ '/' | relative_url }}" class="logo"><strong>{{ site.title }}</strong></a>
+
+  <nav id="nav">
+    <ul>
+      {%- for item in site.data.navigation %}
+
+        {%- comment -%}
+          Decide whether this nav item represents the page being viewed, so it
+          can be highlighted with Hyperbolic's `current` class.
+
+          Two cases:
+            - an exact URL match (e.g. /zoe-and-zephy/ while on that page), or
+            - a section match, so that an essay at /writing/some-essay/ still
+              highlights the "Writing" nav item.
+          The `item.url != '/'` guard is essential: every URL on the site
+          contains "/", so without it the Home link would always highlight.
+        {%- endcomment -%}
+        {%- assign is_current = false -%}
+        {%- if page.url == item.url -%}
+          {%- assign is_current = true -%}
+        {%- elsif item.url != '/' and page.url contains item.url -%}
+          {%- assign is_current = true -%}
+        {%- endif -%}
+
+        <li{% if is_current %} class="current"{% endif %}>
+          {%- comment -%}
+            A nav item with children gets the caret icon class that Hyperbolic
+            uses to signal a dropdown; jquery.dropotron then wires up the
+            hover behaviour against the nested <ul>.
+          {%- endcomment -%}
+          <a href="{{ item.url | relative_url }}"{% if item.children %} class="icon solid fa-angle-down"{% endif %}>{{ item.title }}</a>
+          {%- if item.children %}
+          <ul>
+            {%- for child in item.children %}
+            <li><a href="{{ child.url | relative_url }}">{{ child.title }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </li>
+      {%- endfor %}
+    </ul>
+  </nav>
+
+</section>

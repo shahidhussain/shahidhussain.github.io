@@ -1,0 +1,6 @@
+# Jekyll build output — regenerated on every build, never committed.
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/

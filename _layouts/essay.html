@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{%- comment -%}
+  _layouts/essay.html — layout for a single essay (anything in _posts/).
+
+  Applied automatically: _config.yml sets `layout: essay` as the default for
+  every post, so an essay file never needs to declare it.
+
+  Structure mirrors Hyperbolic's stock generic.html page: a major header with
+  the title, then the prose. This gives essays the theme's long-form
+  typography with no bespoke CSS.
+{%- endcomment -%}
+<section class="wrapper style1">
+  <div class="inner">
+
+    <header class="major special">
+      {%- comment -%} The essay's only <h1>, from its front-matter title. {%- endcomment -%}
+      <h1>{{ page.title }}</h1>
+      <p>
+        {%- comment -%} `date_to_string` renders e.g. "06 Sep 2026". {%- endcomment -%}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date_to_string }}</time>
+      </p>
+    </header>
+
+    {%- comment -%}
+      Optional lead image. An essay opts in with `image: /images/foo.jpg` in
+      its front matter; omit it and nothing is rendered.
+    {%- endcomment -%}
+    {% if page.image %}
+      <div class="image main"><img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' }}" /></div>
+    {% endif %}
+
+    {%- comment -%} The essay body, converted from Markdown. {%- endcomment -%}
+    {{ content }}
+
+    <hr class="major" />
+
+    <ul class="actions">
+      <li><a href="{{ '/writing/' | relative_url }}" class="button">All writing</a></li>
+    </ul>
+
+  </div>
+</section>

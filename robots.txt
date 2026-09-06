@@ -1,0 +1,14 @@
+# robots.txt
+#
+# Written explicitly rather than left to jekyll-sitemap's generated default,
+# so the rules are visible and editable.
+#
+# Everything on this site is intended to be indexed. To hide a page from
+# search engines, prefer adding `sitemap: false` to that page's front matter
+# AND a `noindex` robots meta tag on the page itself — a Disallow rule here
+# stops crawling but does NOT reliably remove a page from search results.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://shahidhussain.com/sitemap.xml

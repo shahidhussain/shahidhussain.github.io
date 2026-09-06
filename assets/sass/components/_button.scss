@@ -1,5 +1,5 @@
 ///
-/// Story by Pixelarity
+/// Hyperbolic by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -15,25 +15,41 @@
 		@include vendor('transition', (
 			'background-color #{_duration(transition)} ease-in-out',
 			'box-shadow #{_duration(transition)} ease-in-out',
-			'color #{_duration(transition)} ease-in-out'
+			'color #{_duration(transition)} ease-in-out',
+			'transform #{_duration(transition) * 0.5} ease-in-out'
 		));
 		border: 0;
+		border-radius: _size(border-radius);
 		cursor: pointer;
 		display: inline-block;
 		font-weight: _font(weight-bold);
-		letter-spacing: _font(kerning-alt);
+		height: _size(element-height);
+		line-height: _size(element-height);
+		padding: 0 2rem;
 		text-align: center;
 		text-decoration: none;
-		text-transform: uppercase;
 		white-space: nowrap;
-		font-size: 0.75rem;
-		max-width: 20rem;
-		height: 3.75em;
-		line-height: 3.75em;
-		border-radius: 3.75em;
-		padding: 0 2.5em;
-		text-overflow: ellipsis;
-		overflow: hidden;
+		text-transform: uppercase;
+		font-size: 0.9rem;
+		border-radius: _size(element-height);
+
+		&.small {
+			font-size: 0.8rem;
+			height: _size(element-height) * 0.75;
+			line-height: _size(element-height) * 0.75;
+			padding: 0 1.75rem;
+		}
+
+		&.large {
+			font-size: 1.25rem;
+			height: _size(element-height) * 1.25;
+			line-height: _size(element-height) * 1.25;
+			padding: 0 3rem;
+		}
+
+		&.wide {
+			min-width: 13rem;
+		}
 
 		&.icon {
 			&:before {
@@ -43,26 +59,6 @@
 
 		&.fit {
 			width: 100%;
-		}
-
-		&.small {
-			font-size: 0.6rem;
-			height: 3.325em;
-			line-height: 3.325em;
-			border-radius: 3.325em;
-			padding: 0 2em;
-		}
-
-		&.large {
-			font-size: 0.8rem;
-			height: 4em;
-			line-height: 4em;
-			border-radius: 4em;
-			padding: 0 3em;
-		}
-
-		&.wide {
-			min-width: 14em;
 		}
 
 		&.disabled,
@@ -79,31 +75,40 @@
 		button,
 		.button {
 			background-color: transparent;
-			box-shadow: inset 0 0 0 _size(border-width) _palette($p, border);
+			box-shadow: inset 0 0 0 1px _palette($p, fg-bold);
 			color: _palette($p, fg-bold) !important;
 
-			&:hover {
-				box-shadow: inset 0 0 0 _size(border-width) _palette($p, accent);
-				color: _palette($p, accent) !important;
-			}
+			@if ($p == 'invert') {
+				&:hover {
+					background-color: transparentize(_palette($p, fg-bold), 0.9);
 
-			&:active {
-				background-color: transparentize(_palette($p, accent), 0.8);
-				box-shadow: inset 0 0 0 _size(border-width) _palette($p, accent);
-				color: _palette($p, accent) !important;
+					&:active {
+						background-color: transparentize(_palette($p, fg-bold), 0.75);
+					}
+				}
+			}
+			@else {
+				&:hover {
+					box-shadow: inset 0 0 0 1px _palette(accent1);
+					color: _palette(accent1) !important;
+
+					&:active {
+						background-color: transparentize(_palette(accent1), 0.75);
+					}
+				}
 			}
 
 			&.primary {
-				background-color: _palette($p, fg-bold);
-				box-shadow: none;
-				color: _palette($p, bg) !important;
+				@include gradient-background;
+				box-shadow: 0 0.5rem 1.75rem 0 rgba(0,0,0,0.25);
+				color: _palette(invert, fg-bold) !important;
 
 				&:hover {
-					background-color: _palette($p, accent);
-				}
+					background-color: lighten(_palette(accent1), 8);
 
-				&:active {
-					background-color: darken(_palette($p, accent), 12);
+					&:active {
+						background-color: desaturate(darken(_palette(accent1), 8), 5);
+					}
 				}
 			}
 		}

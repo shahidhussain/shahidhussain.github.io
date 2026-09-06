@@ -1,97 +1,110 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>Shahid Hussain</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+---
+# ============================================================================
+#  Homepage. Serves at "/" — the permalink is set explicitly so this file's
+#  URL can never drift, whatever Jekyll's defaults do.
+#
+#  Uses `layout: default` rather than `layout: page` because it supplies its
+#  own <section> markup (a banner plus spotlights), which the generic page
+#  wrapper would otherwise duplicate.
+#
+#  `banner: true` tells _includes/header.html to render the transparent
+#  header style that sits over the banner image. It must stay paired with the
+#  <section id="banner"> below: the theme's JS looks for that id.
+# ============================================================================
+layout: default
+permalink: /
+title: Shahid Hussain
+description: "I work on no-BS tech strategy, product development and marketing."
+banner: true
+---
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
+<!-- Banner: the page's single <h1>. -->
+<section id="banner">
+	<div class="content">
+		<header class="major special">
+			<h1>Shahid Hussain</h1>
+		</header>
+		<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
+		<ul class="actions special">
+			<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary wide">Find me on LinkedIn</a></li>
+			<!-- `scrolly` is Hyperbolic's smooth-scroll hook, wired up in assets/js/main.js. -->
+			<li><a href="#first" class="button wide scrolly">Find out more</a></li>
+		</ul>
+	</div>
+</section>
 
-				<!-- One -->
-					<section class="banner style1 orient-left content-align-left image-position-center fullscreen onload-image-fade-in onload-content-fade-right">
-						<div class="content">
-							<h1>Shahid Hussain</h1>
-							<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
-							<ul class="actions stacked">
-								<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary big wide smooth-scroll-middle">Find me on LinkedIn</a></li>
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Find out more</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/bannerme.jpg" alt="" />
-						</div>
-					</section>
+<!-- Selected work. `id="first"` is the target of the "Find out more" button above. -->
+<section class="wrapper style1" id="first">
+	<div class="inner">
+		<header class="major special">
+			<h2>Selected work</h2>
+		</header>
 
-				<!-- Two -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
-						<div class="content">
-							<h2>Moving Google’s biggest messaging app</h2>
-							<p>Google’s primary messaging app in xx was Hangouts, and today, it’s Google Chat. These two products had different back ends, different clients, different APIs connecting them, and different fundamental assumptions about how chats should be organised. Moving all of Hangout’s organisations and consumers to Chat was a huge, multi-year project, spanning fifty engineers, six engineering leads, and one lead PM.</p>
-						</div>
-						<div class="image">
-							<img src="images/spotlight01edit.jpg" alt="" />
-						</div>
-					</section>
+		<!-- Hyperbolic's `spotlights` component: alternating circular image + copy. -->
+		<div class="spotlights">
 
-				<!-- Three -->
-					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Solving Chrome OS’s greatest challenge: apps</h2>
-							<p>Chrome OS is fast, easy to use, and secure. But its achilles heel was apps and games. When the Android framework was introduced to Chrome OS, the developer ecosystem for the second biggest desktop OS needed kickstarting. Android developers needed to understand how to build for desktop, and they also needed a reason to believe in the platform. How did 80 key applications come on board?</p>
-						</div>
-						<div class="image">
-							<img src="images/spotlight02edit.jpg" alt="" />
-						</div>
-					</section>
+			<section>
+				<div class="image"><img src="{{ '/images/spotlight01edit.jpg' | relative_url }}" alt="" /></div>
+				<div class="content">
+					<header class="major">
+						<h3>Moving Google&rsquo;s biggest messaging app</h3>
+					</header>
+					<p>Google&rsquo;s primary messaging app in xx was Hangouts, and today, it&rsquo;s Google Chat. These two products had different back ends, different clients, different APIs connecting them, and different fundamental assumptions about how chats should be organised. Moving all of Hangout&rsquo;s organisations and consumers to Chat was a huge, multi-year project, spanning fifty engineers, six engineering leads, and one lead PM.</p>
+				</div>
+			</section>
 
-				<!-- Four -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Launching Google's first hardware suite</h2>
-							<p>In 2016, Google made its first joint hardware launch across categories as a signal that Google was serious about hardware. It included the first Pixel phone, the first Google Home, Daydream View (now deprecated), the first 4k Chromecast and Google Wifi. Each of those devices, with their own teams and branding, needed aligning in order to present themselves as one family of devices — and then coordinating on launch day to ensure things went smoothly.</p>
-						</div>
-						<div class="image">
-							<img src="images/spotlight03edit.jpg" alt="" />
-						</div>
-					</section>
+			<section>
+				<div class="image"><img src="{{ '/images/spotlight02edit.jpg' | relative_url }}" alt="" /></div>
+				<div class="content">
+					<header class="major">
+						<h3>Solving Chrome OS&rsquo;s greatest challenge: apps</h3>
+					</header>
+					<p>Chrome OS is fast, easy to use, and secure. But its achilles heel was apps and games. When the Android framework was introduced to Chrome OS, the developer ecosystem for the second biggest desktop OS needed kickstarting. Android developers needed to understand how to build for desktop, and they also needed a reason to believe in the platform. How did 80 key applications come on board?</p>
+				</div>
+			</section>
 
-				<!-- Seven -->
-					<section class="wrapper style1 align-center">
-						<div class="inner medium">
-							<h2>Reach out</h2>
-							<form action="https://formspree.io/f/mqaerpek" method="post">
-								<div class="fields">
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" value="" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="6"></textarea>
-									</div>
-								</div>
-								<ul class="actions special">
-									<li><input type="submit" name="submit" id="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+			<section>
+				<div class="image"><img src="{{ '/images/spotlight03edit.jpg' | relative_url }}" alt="" /></div>
+				<div class="content">
+					<header class="major">
+						<h3>Launching Google's first hardware suite</h3>
+					</header>
+					<p>In 2016, Google made its first joint hardware launch across categories as a signal that Google was serious about hardware. It included the first Pixel phone, the first Google Home, Daydream View (now deprecated), the first 4k Chromecast and Google Wifi. Each of those devices, with their own teams and branding, needed aligning in order to present themselves as one family of devices &mdash; and then coordinating on launch day to ensure things went smoothly.</p>
+				</div>
+			</section>
 
-						</div>
-					</section>
+		</div>
+	</div>
+</section>
+
+<!--
+	Contact.
+
+	`id="contact"` is deliberate: the site footer links to /#contact. Before the
+	refactor that anchor did not exist anywhere, so the link silently landed at
+	the top of the page. Adding the id makes the existing link work.
+
+	The Formspree endpoint is unchanged from the previous homepage.
+-->
+<section class="wrapper style2 alt" id="contact">
+	<div class="inner">
+		<header class="major special">
+			<h2>Reach out</h2>
+		</header>
+		<form action="https://formspree.io/f/mqaerpek" method="post">
+			<div class="row gtr-uniform">
+				<div class="col-6 col-12-small">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" value="" />
+				</div>
+				<div class="col-12">
+					<label for="message">Message</label>
+					<textarea name="message" id="message" rows="6"></textarea>
+				</div>
 			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
+			<ul class="actions special">
+				<li><input type="submit" name="submit" id="submit" value="Send Message" /></li>
+			</ul>
+		</form>
+	</div>
+</section>

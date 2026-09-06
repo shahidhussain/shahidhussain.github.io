@@ -1,0 +1,36 @@
+/* ==========================================================================
+   custom.css — site-specific overrides.
+
+   Keep ALL local styling changes in this file and never edit main.css.
+   main.css is the unmodified Hyperbolic stylesheet; leaving it pristine means
+   a future theme update can be dropped in without hunting for local edits.
+
+   This file loads after main.css (see _includes/head.html), so anything here
+   wins on equal specificity.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Homepage banner image.
+
+   Stock Hyperbolic hardcodes its own demo photo (images/banner.jpg) as the
+   #banner background, in two places: once for desktop and once inside a
+   max-width:980px media query for mobile. Both are overridden here to use the
+   site's own portrait, preserving the identical dark gradient the theme lays
+   over the top so the white banner text stays legible.
+   -------------------------------------------------------------------------- */
+
+#banner {
+	background-image:
+		linear-gradient(90deg, rgba(58, 58, 58, 0.6), rgba(58, 58, 58, 0.6)),
+		url("../../images/bannerme.jpg");
+}
+
+@media screen and (max-width: 980px) {
+
+	#banner {
+		background-image:
+			linear-gradient(90deg, rgba(58, 58, 58, 0.6), rgba(58, 58, 58, 0.6)),
+			url("../../images/bannerme.jpg");
+	}
+
+}

@@ -1,0 +1,26 @@
+# ============================================================================
+#  _data/navigation.yml — THE SINGLE SOURCE OF TRUTH FOR THE SITE NAV.
+#
+#  This file is the whole point of the Jekyll refactor. Edit it once and the
+#  nav updates on every page of the site, including the mobile menu.
+#
+#  To add a page to the nav, add an entry below. To remove one, delete it.
+#  To reorder the nav, reorder the list. Nothing else needs to change.
+#
+#  Fields:
+#    title    - the visible link text
+#    url      - root-relative URL, with a leading AND trailing slash
+#    children - OPTIONAL list of sub-links. Hyperbolic renders these as a
+#               hover dropdown on desktop and as an indented group in the
+#               mobile menu. Both are handled automatically; see
+#               _includes/header.html for how children are rendered.
+# ============================================================================
+
+- title: Home
+  url: /
+
+- title: Writing
+  url: /writing/
+
+- title: Zoe and Zephy
+  url: /zoe-and-zephy/
