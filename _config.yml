@@ -20,6 +20,10 @@ url: "https://shahidhussain.com"
 baseurl: ""
 
 title: "Shahid Hussain"
+# `tagline` is used by jekyll-seo-tag for the homepage <title>, rendered as
+# "<title> | <tagline>". Without it the much longer `description` below is used
+# instead, producing a title far past the ~60 characters search results show.
+tagline: "Tech strategy, product and marketing"
 # Used as the fallback meta description on any page that doesn't set its own.
 description: "Tech strategy, product development and marketing. Writing on how large products actually get built and shipped."
 
@@ -49,6 +53,12 @@ cloudflare_analytics_token: "61047d9be6224475aab6ea81113ec1d2"
 #                       Twitter cards and JSON-LD, all from one {% seo %} tag.
 #    jekyll-sitemap  -> generates /sitemap.xml automatically from published pages.
 # ----------------------------------------------------------------------------
+# The `github-pages` gem injects jekyll-theme-primer as a default theme when
+# none is named. This site supplies all of its own layouts and CSS, so that
+# theme is entirely unused - but it still emitted a stray 136KB
+# assets/css/style.css into the build. Setting theme to nothing disables it.
+theme:
+
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
