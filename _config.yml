@@ -79,6 +79,15 @@ permalink: /writing/:title/
 #  contain ONLY its content — the layout is assigned here, once.
 # ----------------------------------------------------------------------------
 defaults:
+  # The press kit PDF is kept at its original URL so previously-shared links
+  # keep working, but it is retired: it is no longer linked from any page, so
+  # it is also excluded from the sitemap rather than being actively advertised
+  # to search engines.
+  - scope:
+      path: "zoe-and-zephy/assets/zzpresskit.pdf"
+    values:
+      sitemap: false
+
   # Every post in _posts/ is an essay unless it says otherwise.
   - scope:
       path: ""
