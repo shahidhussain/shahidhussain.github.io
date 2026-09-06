@@ -1,120 +1,54 @@
 ///
-/// Story by Pixelarity
+/// Hyperbolic by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
 
-/* Wrapper (style1) */
+/* Wrapper */
 
-	.wrapper.style1 {
+	.wrapper {
+		$wrapper-pad: _size(wrapper-pad, default);
+
+		@include padding($wrapper-pad, 0);
+		position: relative;
+
 		> .inner {
-			@include padding(_size(padding, default), _size(padding, default) * 0.5);
 			margin: 0 auto;
-			max-width: 100%;
-			width: _size(inner);
-
-			&.medium {
-				width: _size(inner) * 0.75;
-			}
-
-			&.small {
-				width: _size(inner) * 0.5;
-			}
+			width: 75rem;
+			max-width: calc(100% - #{$wrapper-pad});
 		}
 
-		@include breakpoint('<=xlarge') {
-			> .inner {
-				@include padding(_size(padding, xlarge), _size(padding, xlarge) * 0.5);
-			}
-		}
-
-		@include breakpoint('<=large') {
-			> .inner {
-				@include padding(_size(padding, large), _size(padding, large));
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			> .inner {
-				@include padding(_size(padding, medium) * 1.5, _size(padding, medium));
-			}
-		}
-
-		@include breakpoint('<=small') {
-			> .inner {
-				@include padding(_size(padding, small) * 1.5, _size(padding, small));
-			}
-		}
-	}
-
-/* Wrapper (style2) */
-
-	.wrapper.style2 {
-		padding: _size(padding, default);
-		background-color: _palette(bg-alt);
-
-		> .inner {
-			@include padding(_size(padding, default) * 0.75, _size(padding, default) * 0.5);
+		&.style1 {
 			background-color: _palette(bg);
-			border-radius: _size(border-radius-alt);
-			margin: 0 auto;
-			max-width: 100%;
-			position: relative;
-			width: _size(inner);
-			z-index: 1;
-
-			&.medium {
-				width: _size(inner) * 0.75;
-			}
-
-			&.small {
-				width: _size(inner) * 0.5;
-			}
 		}
 
-		@include breakpoint('<=xlarge') {
-			padding: _size(padding, xlarge);
+		&.style2 {
+			@include color(invert);
+			@include gradient-background;
 
-			> .inner {
-				@include padding(_size(padding, xlarge) * 0.75, _size(padding, xlarge) * 0.5);
+			&.alt {
+				@include curve-after;
+				@include curve-before;
 			}
 		}
 
 		@include breakpoint('<=large') {
-			padding: _size(padding, large);
+			$wrapper-pad: _size(wrapper-pad, large);
+
+			@include padding($wrapper-pad, 0);
 
 			> .inner {
-				@include padding(_size(padding, large) * 0.75, _size(padding, large) * 0.5);
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			padding: _size(padding, medium) * 0.75;
-
-			> .inner {
-				@include padding(_size(padding, medium), _size(padding, medium) * 0.75);
+				max-width: calc(100% - #{$wrapper-pad});
 			}
 		}
 
 		@include breakpoint('<=small') {
-			padding: _size(padding, small) * 0.75;
+			$wrapper-pad: _size(wrapper-pad, small);
+
+			@include padding($wrapper-pad, 0);
 
 			> .inner {
-				@include padding(_size(padding, small), _size(padding, small) * 0.75);
-			}
-		}
-	}
-
-	#wrapper {
-		> .wrapper.style2 {
-			&.invert {
-				&:not(.color1):not(.color2):not(.color3):not(.color4):not(.color5):not(.color6):not(.color7) {
-					background-color: _palette(invert, bg-alt);
-				}
-
-				> .inner {
-					background-color: _palette(invert, bg);
-				}
+				max-width: calc(100% - #{$wrapper-pad});
 			}
 		}
 	}

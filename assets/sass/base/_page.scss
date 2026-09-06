@@ -1,5 +1,5 @@
 ///
-/// Story by Pixelarity
+/// Hyperbolic by Pixelarity
 /// pixelarity.com | hello@pixelarity.com
 /// License: pixelarity.com/license
 ///
@@ -34,7 +34,6 @@
 		}
 
 	body {
-		background: _palette(bg);
 
 		// Stops initial animations until page loads.
 			&.is-preload {
