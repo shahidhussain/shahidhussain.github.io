@@ -1,0 +1,97 @@
+# ============================================================================
+#  _config.yml — site-wide settings for Jekyll.
+#
+#  Jekyll reads this file ONCE at build time. If you edit it while running
+#  `jekyll serve`, you must stop and restart the server for changes to apply.
+#  (Every other file hot-reloads; this one does not.)
+# ============================================================================
+
+# ----------------------------------------------------------------------------
+#  Identity. These feed the SEO tags on every page (see _includes/head.html).
+# ----------------------------------------------------------------------------
+
+# `url` MUST be the full production origin with no trailing slash. jekyll-seo-tag
+# uses it to build absolute canonical and Open Graph URLs. Getting this wrong is
+# the single most common cause of broken social-share previews.
+url: "https://shahidhussain.com"
+
+# `baseurl` is for sites served from a subfolder (e.g. user.github.io/project).
+# This site is served from the domain root, so it stays empty.
+baseurl: ""
+
+title: "Shahid Hussain"
+# Used as the fallback meta description on any page that doesn't set its own.
+description: "Tech strategy, product development and marketing. Writing on how large products actually get built and shipped."
+
+author:
+  name: "Shahid Hussain"
+
+# Social profiles. jekyll-seo-tag emits these as schema.org `sameAs` links,
+# which is how search engines connect this site to your other profiles.
+social:
+  name: "Shahid Hussain"
+  links:
+    - https://www.linkedin.com/in/shahidhussain/
+    - https://www.instagram.com/shahidhussain/
+    - https://bsky.app/profile/shahidhussain.bsky.social
+
+# ----------------------------------------------------------------------------
+#  Analytics — Cloudflare Web Analytics.
+#  Rendered by _includes/analytics.html. Blank this value to disable tracking
+#  site-wide without touching any template.
+# ----------------------------------------------------------------------------
+cloudflare_analytics_token: "61047d9be6224475aab6ea81113ec1d2"
+
+# ----------------------------------------------------------------------------
+#  Plugins. Both are on GitHub Pages' allowlist, so the site builds natively on
+#  GitHub Pages with NO GitHub Actions workflow required.
+#    jekyll-seo-tag  -> <title>, meta description, canonical, Open Graph,
+#                       Twitter cards and JSON-LD, all from one {% seo %} tag.
+#    jekyll-sitemap  -> generates /sitemap.xml automatically from published pages.
+# ----------------------------------------------------------------------------
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# ----------------------------------------------------------------------------
+#  URLs.
+#
+#  Essays live in _posts/ and are published under /writing/<slug>/.
+#  This pattern is set EXPLICITLY rather than using a built-in shorthand like
+#  `permalink: pretty`, so that the URL shape can never silently change when
+#  Jekyll's defaults change. Existing pages set their own `permalink` in front
+#  matter, so none of them are affected by this line.
+# ----------------------------------------------------------------------------
+permalink: /writing/:title/
+
+# ----------------------------------------------------------------------------
+#  Default front matter, applied by path. This is what lets each page file
+#  contain ONLY its content — the layout is assigned here, once.
+# ----------------------------------------------------------------------------
+defaults:
+  # Every post in _posts/ is an essay unless it says otherwise.
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "essay"
+
+# ----------------------------------------------------------------------------
+#  Excluded from the built site. These are development files that must never
+#  be published to the web.
+#
+#  NOTE: anything starting with an underscore (_verification/, _includes/,
+#  _layouts/) is excluded by Jekyll automatically and needs no entry here.
+# ----------------------------------------------------------------------------
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - README.md
+  - .sass-cache/
+
+# Markdown engine. `kramdown` + `GFM` gives GitHub-flavoured Markdown, so
+# fenced code blocks and tables work the way they do in a README.
+markdown: kramdown
+kramdown:
+  input: GFM
