@@ -1,0 +1,20 @@
+{%- comment -%}
+  _includes/scripts.html — Hyperbolic's JavaScript, loaded on every page.
+
+  ORDER MATTERS and these are listed in the theme's required order:
+    jquery            - required by everything below it
+    dropotron         - builds the desktop nav dropdowns
+    scrollex/scrolly  - scroll-triggered effects, incl. the header style swap
+    browser/breakpoints/util - the theme's own helper libraries
+    main.js           - the theme's setup code; MUST load last, as it calls
+                        into all of the above
+{%- endcomment -%}
+
+<script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.dropotron.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrollex.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/jquery.scrolly.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/browser.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/breakpoints.min.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/util.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>

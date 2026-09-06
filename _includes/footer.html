@@ -1,0 +1,22 @@
+{%- comment -%}
+  _includes/footer.html — site footer, rendered on every page.
+
+  This is the footer the Zoe and Zephy page already used; it is now shared, so
+  the homepage gains a footer it did not previously have. The social links are
+  the ones that page carried, with the two self-referential absolute URLs
+  (shahidhussain.com and shahidhussain.com/#contact) rewritten as root-relative
+  links now that everything is one site.
+{%- endcomment -%}
+
+<section id="footer">
+  <ul class="icons">
+    <li><a href="{{ '/' | relative_url }}" class="icon alt solid fa-home"><span class="label">Website</span></a></li>
+    <li><a href="{{ '/#contact' | relative_url }}" class="icon alt solid fa-envelope"><span class="label">Email</span></a></li>
+    <li><a href="https://www.linkedin.com/in/shahidhussain/" class="icon alt brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+    <li><a href="https://www.instagram.com/shahidhussain/" class="icon alt brands fa-instagram"><span class="label">Instagram</span></a></li>
+    <li><a href="https://bsky.app/profile/shahidhussain.bsky.social" class="icon alt fa-hashtag"><span class="label">Bluesky</span></a></li>
+  </ul>
+  <p class="copyright">
+    &copy; Shahid Hussain. All rights reserved.
+  </p>
+</section>

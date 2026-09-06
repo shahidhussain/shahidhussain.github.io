@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+{%- comment -%}
+  _layouts/default.html — the outermost HTML skeleton for every page.
+
+  This is the file that ends the copy-paste problem: <head>, the nav, the
+  footer and the script tags exist here ONCE, and every page on the site is
+  rendered through it. Page files contain only their own content.
+
+  `lang="en"` is set here (it was missing from every page before the refactor,
+  which is an accessibility and SEO fault).
+
+  The `is-preload` body class is Hyperbolic's; main.js strips it shortly after
+  load, which is what drives the theme's fade-in transitions. Removing it would
+  break those animations.
+{%- endcomment -%}
+<html lang="en">
+  <head>
+    {% include head.html %}
+  </head>
+  <body class="is-preload">
+
+    <div id="wrapper">
+
+      {% include header.html %}
+
+      {%- comment -%} The individual page's content is injected here. {%- endcomment -%}
+      {{ content }}
+
+      {% include footer.html %}
+
+    </div>
+
+    {% include scripts.html %}
+
+  </body>
+</html>

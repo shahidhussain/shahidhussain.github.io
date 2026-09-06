@@ -1,0 +1,13 @@
+{%- comment -%}
+  _includes/analytics.html — Cloudflare Web Analytics.
+
+  Privacy-friendly and cookie-free, so it needs no consent banner. The token
+  lives in _config.yml as `cloudflare_analytics_token`; blank that value to
+  turn tracking off across the whole site without editing any template.
+
+  Note the beacon is blocked by most ad blockers, so figures under-count real
+  traffic. Useful for trends, not for exact numbers.
+{%- endcomment -%}
+{% if site.cloudflare_analytics_token and site.cloudflare_analytics_token != "" %}
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "{{ site.cloudflare_analytics_token }}"}'></script>
+{% endif %}

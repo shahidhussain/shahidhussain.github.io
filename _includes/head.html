@@ -1,0 +1,43 @@
+{%- comment -%}
+  _includes/head.html — everything inside <head>, for every page.
+
+  IMPORTANT: all SEO metadata on this site is emitted by the single {% seo %}
+  tag below. Do NOT add <title>, <meta name="description">, canonical links or
+  Open Graph tags to individual pages — jekyll-seo-tag generates all of them
+  from front matter, and a hand-written duplicate would produce two competing
+  tags (two canonicals is actively worse for SEO than none).
+
+  To control a page's metadata, set these in that page's front matter instead:
+    title:       -> <title> and og:title
+    description: -> meta description and og:description
+    image:       -> og:image / twitter:image (use a root-relative path)
+{%- endcomment -%}
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+
+{%- comment -%} Generates title, description, canonical, Open Graph, Twitter cards and JSON-LD. {%- endcomment -%}
+{% seo %}
+
+{%- comment -%}
+  `relative_url` prefixes the site's baseurl. It is empty for this site, but
+  using the filter means these paths keep working if the site ever moves into
+  a subdirectory.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
+
+{%- comment -%}
+  Favicons are Zoe-and-Zephy-branded, so they are opt-in per page rather than
+  site-wide. A page requests them by setting `favicons: true` in front matter.
+  This preserves the exact behaviour the site had before the refactor.
+{%- endcomment -%}
+{% if page.favicons %}
+  <link rel="icon" type="image/png" href="{{ '/zoe-and-zephy/images/favicon-96x96.png' | relative_url }}" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="{{ '/zoe-and-zephy/images/favicon.svg' | relative_url }}" />
+  <link rel="shortcut icon" href="{{ '/zoe-and-zephy/images/favicon.ico' | relative_url }}" />
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ '/zoe-and-zephy/images/apple-touch-icon.png' | relative_url }}" />
+  <meta name="apple-mobile-web-app-title" content="Zoe &amp; Zephy" />
+  <link rel="manifest" href="{{ '/zoe-and-zephy/images/site.webmanifest' | relative_url }}" />
+{% endif %}
+
+{% include analytics.html %}

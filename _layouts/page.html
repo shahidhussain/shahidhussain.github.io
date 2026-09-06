@@ -1,0 +1,30 @@
+---
+layout: default
+---
+{%- comment -%}
+  _layouts/page.html — a standard content page.
+
+  Wraps the page's content in Hyperbolic's standard section shell so that
+  Markdown or HTML written in a page file picks up the theme's typography,
+  spacing and max-width without the author needing to know any class names.
+
+  Pages that need full control of their own sections (the homepage and the
+  Zoe and Zephy page both do, because they use banners and multi-column rows)
+  should use `layout: default` instead and supply their own <section> markup.
+{%- endcomment -%}
+<section class="wrapper style1">
+  <div class="inner">
+
+    {%- comment -%}
+      One <h1> per page, taken from front matter. Pages should NOT repeat the
+      title as a heading in their body content, or the page ends up with two.
+    {%- endcomment -%}
+    <header class="major special">
+      <h1>{{ page.title }}</h1>
+      {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+    </header>
+
+    {{ content }}
+
+  </div>
+</section>
