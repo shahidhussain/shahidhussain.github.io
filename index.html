@@ -21,15 +21,25 @@ banner: true
 <!-- Banner: the page's single <h1>. -->
 <section id="banner">
 	<div class="content">
-		<header class="major special">
-			<h1>Shahid Hussain</h1>
-		</header>
-		<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
-		<ul class="actions special">
-			<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary wide">Find me on LinkedIn</a></li>
-			<!-- `scrolly` is Hyperbolic's smooth-scroll hook, wired up in assets/js/main.js. -->
-			<li><a href="#first" class="button wide scrolly">Find out more</a></li>
-		</ul>
+
+		<!-- Portrait first in the flex row, but rendered to the right on desktop
+		     and above the text on narrow screens (see custom.css). -->
+		<div class="banner-text">
+			<header class="major special">
+				<h1>Shahid Hussain</h1>
+			</header>
+			<p class="major">I work on no-BS tech strategy, product development and marketing.</p>
+			<ul class="actions special">
+				<li><a href="https://www.linkedin.com/in/shahidhussain/" class="button primary wide">Find me on LinkedIn</a></li>
+				<!-- `scrolly` is Hyperbolic's smooth-scroll hook, wired up in assets/js/main.js. -->
+				<li><a href="#first" class="button wide scrolly">Find out more</a></li>
+			</ul>
+		</div>
+
+		<div class="banner-portrait">
+			<img src="{{ '/images/bannerme.jpg' | relative_url }}" alt="Shahid Hussain" />
+		</div>
+
 	</div>
 </section>
 
