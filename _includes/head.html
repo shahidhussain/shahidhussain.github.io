@@ -27,6 +27,12 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 
 {%- comment -%}
+  Site-specific overrides. Loaded AFTER the theme stylesheet so it wins.
+  Put local styling changes in custom.css, never in main.css.
+{%- endcomment -%}
+<link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}" />
+
+{%- comment -%}
   Favicons are Zoe-and-Zephy-branded, so they are opt-in per page rather than
   site-wide. A page requests them by setting `favicons: true` in front matter.
   This preserves the exact behaviour the site had before the refactor.
