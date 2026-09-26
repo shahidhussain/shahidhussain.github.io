@@ -63,3 +63,22 @@
 	}
 
 }
+
+/* --------------------------------------------------------------------------
+   Contact form: space the submit button away from the fields.
+
+   Hyperbolic's uniform-gutter grid deliberately strips the bottom margin off
+   the last element in each column:
+
+       .row.gtr-uniform > * > :last-child { margin-bottom: 0; }
+
+   That is right for grid cells sitting side by side, but it leaves the
+   textarea with no space beneath it, and `ul.actions` carries no top margin
+   of its own — so the Send Message button sat flush against the box.
+
+   Scoped to actions inside a form so the banner's button row is unaffected.
+   -------------------------------------------------------------------------- */
+
+form ul.actions {
+	margin-top: 2.5rem;
+}
