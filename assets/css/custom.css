@@ -13,25 +13,35 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   Spotlight images: force a square crop so the theme's circles are circles.
+   Spotlight images: rectangular, uncropped.
 
-   Hyperbolic styles spotlight images with `border-radius: 100%` and assumes a
-   SQUARE source image. The work images here are 1440x900 landscape, so the
-   circular mask stretched them into ovals.
+   Hyperbolic masks spotlight images into circles:
 
-   Rather than abandon the theme's circular design, this crops each image to a
-   1:1 box and lets `object-fit: cover` fill it from the centre — which is what
-   a square source would have produced. The theme's own sizing, shadow, mask
-   and alternating left/right layout are all untouched.
+       .spotlights section .image     { border-radius: 100%; ... }
+       .spotlights section .image img { border-radius: 100%; ... }
+
+   A circular mask crops the left and right edges off a landscape image. The
+   work images here are 1440x900 screenshots and logo artwork, where those
+   edges carry the content, so the mask is undone and each image is shown
+   whole at its natural aspect ratio.
+
+   The theme's drop shadow on .image is deliberately NOT overridden, so the
+   images keep it.
+
+   Corners are square. For slightly rounded corners instead, set a radius on
+   BOTH rules below (the container clips the image, so they must match).
    -------------------------------------------------------------------------- */
 
-.spotlights section .image img {
-	aspect-ratio: 1 / 1;
-	object-fit: cover;
-	/* object-position defaults to centre; adjust per-image here if a particular
-	   crop cuts off something important, e.g.
-	   .spotlights section:nth-child(3) .image img { object-position: center 30%; } */
+.spotlights section .image {
+	border-radius: 0;
 }
+
+	.spotlights section .image img {
+		border-radius: 0;
+		/* Natural proportions: no forced 1:1 box and no cropping. The theme
+		   already sets width:100%, so height follows the aspect ratio. */
+		height: auto;
+	}
 
 /* --------------------------------------------------------------------------
    Spotlight spacing.
