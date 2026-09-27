@@ -28,16 +28,19 @@
    The theme's drop shadow on .image is deliberately NOT overridden, so the
    images keep it.
 
-   Corners are square. For slightly rounded corners instead, set a radius on
-   BOTH rules below (the container clips the image, so they must match).
+   Corners are slightly rounded (0.5rem). The radius is set on BOTH the
+   container and the image because the container is what clips.
    -------------------------------------------------------------------------- */
 
 .spotlights section .image {
-	border-radius: 0;
+	border-radius: 0.5rem;
 }
 
 	.spotlights section .image img {
-		border-radius: 0;
+		/* Must match the container's radius: the container is what clips the
+		   image, so a mismatch leaves square corners poking out from behind a
+		   rounded box. */
+		border-radius: 0.5rem;
 		/* Natural proportions: no forced 1:1 box and no cropping. The theme
 		   already sets width:100%, so height follows the aspect ratio. */
 		height: auto;
@@ -91,4 +94,68 @@
 
 form ul.actions {
 	margin-top: 2.5rem;
+}
+
+
+/* --------------------------------------------------------------------------
+   Spotlight images on small screens: use the full content width.
+
+   Once the layout stacks (below 980px) the image sits on its own line, but
+   the theme keeps it at a fixed 20rem and then SHRINKS it to 15rem below
+   736px. On a phone that left it at roughly two-thirds of the column with
+   dead space either side, which wastes the width where it is scarcest.
+
+   These rules let the image fill the column instead. They override the
+   theme's 736px rule as well: custom.css loads after main.css, and at equal
+   specificity the later stylesheet wins regardless of media query.
+   -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 980px) {
+
+	.spotlights section .image,
+	.spotlights section:nth-child(2n) .image {
+		width: 100%;
+		max-width: 100%;
+	}
+
+}
+
+/* --------------------------------------------------------------------------
+   "Selected work" section header: raise it, and give the divider room.
+
+   The theme puts 8rem of padding above the section header but leaves only
+   35px between the divider underneath it and the first spotlight — so the
+   heading sat low in its space while the divider crowded the content below.
+
+   Pulls the top padding in and opens up the gap beneath, so the header block
+   sits higher and reads as belonging to the section rather than to the
+   first item in it. Scoped to this section by id so the contact section and
+   the Zoe page keep the theme's stock spacing.
+   -------------------------------------------------------------------------- */
+
+#first {
+	padding-top: 5rem;
+}
+
+	/* NOTE: this margin does not simply add to the existing gap. The header
+	   already sat 35px clear of the first spotlight, and adjacent vertical
+	   margins collapse to the larger of the two — so the resulting gap is
+	   this value, not this value plus 35px. Measured at 72px. */
+	#first > .inner > header.major.special {
+		margin-bottom: 4.5rem;
+	}
+
+@media screen and (max-width: 736px) {
+
+	#first {
+		padding-top: 3.5rem;
+	}
+
+		/* Vertical space is scarce on a phone, and the stacked layout already
+		   separates the header from the first image. The desktop gap would
+		   just push content below the fold. */
+		#first > .inner > header.major.special {
+			margin-bottom: 2.5rem;
+		}
+
 }
