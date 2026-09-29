@@ -33,6 +33,13 @@
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
 
 {%- comment -%}
+  The theme loads IBM Plex Sans at weights 200 and 400 only. Body text is now
+  400, so bold needs a heavier weight to stand out: this adds 600 (regular and
+  italic). Browsers only download a weight when a page actually uses it.
+{%- endcomment -%}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:600,600i&amp;display=swap" />
+
+{%- comment -%}
   Site-specific overrides. Loaded AFTER the theme stylesheet so it wins.
   Put local styling changes in custom.css, never in main.css.
 {%- endcomment -%}

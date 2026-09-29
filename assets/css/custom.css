@@ -293,3 +293,39 @@ form ul.actions {
 	}
 
 }
+
+
+/* --------------------------------------------------------------------------
+   Body text: weight and line spacing, site-wide.
+
+   The theme sets body text in IBM Plex Sans at weight 200 (ExtraLight) with
+   a line height of 2 — double spacing. That suits the theme's large thin
+   headings, but for paragraphs it reads as washed-out grey, and the lines
+   drift apart so the eye struggles to track from one to the next.
+
+   Paragraph text moves to 400 (Regular) at 1.7. Headings keep the theme's
+   thin 200 weight, so the look of the site is unchanged; only running text
+   is affected.
+
+   Scoped to paragraphs, blockquotes and list items inside content sections.
+   Setting it on `body` would also have reached the nav and buttons, and a
+   line-height on every `ul` would change the height of the nav bar.
+
+   Bold: the theme's bold is 400 — the same as the new body weight, which
+   would make bold text invisible. In content it moves to 600, loaded alongside the
+   theme's fonts in _includes/head.html (the theme only loads 200 and 400).
+   -------------------------------------------------------------------------- */
+
+p,
+blockquote,
+.wrapper li {
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+/* Scoped to content sections: the nav-bar logo is also marked up as <strong>,
+   and should keep the theme's weight rather than pick up this change. */
+.wrapper strong,
+.wrapper b {
+	font-weight: 600;
+}
