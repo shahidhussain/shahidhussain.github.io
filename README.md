@@ -62,6 +62,22 @@ directly; the layout supplies the heading and section wrapper. Then add it to
 
 3. Write the body in Markdown underneath. Start section headings at `##` —
    the title is already the page's `<h1>`.
+
+   **Pictures** are plain Markdown too; no HTML needed. Put the file in
+   `images/writing/your-slug/` and write, on a line of its own:
+
+   ```markdown
+   ![Describe the picture for people who can't see it](/images/writing/your-slug/photo.jpg)
+   ```
+
+   Several on the same line sit side by side. To let readers click through to
+   the full-size file, wrap it in a link:
+   `[![Description](/images/.../photo.jpg)](/images/.../photo.jpg)`.
+
+   On wide screens a picture sits to the right of the text, **level with the
+   paragraph that follows it** — so put it just before the text it belongs
+   beside. On narrower screens it appears in the text where you wrote it.
+   Pictures are never enlarged beyond their own size.
 4. Commit and push.
 
 That's all. On the next build the essay gets its own page, `/writing/` starts

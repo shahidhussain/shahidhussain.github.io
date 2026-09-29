@@ -12,13 +12,7 @@ In 2011 I heard a piece of music that didn't make any sense.
 
 The music was a perfect piece of stadium indie rock -- thoughtful but expansive, layered yet elegantly simple. The band was Salvage, and the two tracks on the CD I bought were called "Electric" and "Searchlights".
 
-<!-- The cover art in the only copy that survived: 125x124px. Shown small on
-     purpose; enlarging it would only show the blur. `essay-aside` places it
-     beside the text on wide screens and inline below this paragraph on
-     narrower ones (see custom.css). -->
-<figure class="essay-aside essay-aside-small">
-	<span class="image"><img src="{{ '/images/writing/search-for-salvage/cover-lowres.jpg' | relative_url }}" alt="The Salvage 'Searchlights' cover art, in the low-resolution copy that survived" width="125" height="124" /></span>
-</figure>
+![The Salvage 'Searchlights' cover art, in the low-resolution copy that survived](/images/writing/search-for-salvage/cover-lowres.jpg)
 
 For the last 15 years, these tracks have been a maddening contradiction. They are professionally produced -- someone with obvious skill spent time and effort on these tracks. I wanted to find out who, and hear more of this goodness. I wanted to find out where they went. And I wanted to know why they were so darn hard to find -- was it a side project by a session band? A producer with an idea and a spare few weeks?
 
@@ -64,6 +58,8 @@ So we looked at the digital data we have. We computed the CDDB disc ID and estab
 The AIs suggested that, if it was a professional band doing this as a test, parts of the lyrics might have survived as parts of other songs. So I transcribed the lyrics myself and handed them over for more aggressive searching. Dead end.
 
 Searched SoundExchange's ISRC database and all four unclaimed-royalty lists. Dead end.
+
+[![Pandora's page for Electric by Salvage, from the album Searchlights, listing features of the song and similar songs](/images/writing/search-for-salvage/pandora.jpg)](/images/writing/search-for-salvage/pandora.jpg)
 
 On a whim, I searched for the song on Pandora. We hadn't checked it before because it's no longer a major music service, but it was in this era. And there it was! Seeing it here jogged my memory -- *this* is where I originally remembered hearing it for the first time. And then I remembered that this is why I bought the disc in the first place, and I pulled the original invoice out of my email, confirming an exact purchase date. I emailed the person I purchased it from, but that was a LONG time ago, so once again, dead end.
 
@@ -136,21 +132,7 @@ Q: How are you getting the sense of space in the record production? Reverb, dual
 
 Greg kindly shared some high resolution images of the front *and back* of the CD slipcase, which I've reproduced here.
 
-<!-- Front and back of the slipcase. `essay-aside` puts the pair beside the
-     text on wide screens; on narrower screens it drops back into the text
-     flow, side by side, and stacks on phones (col-12-small). Each image links
-     to the full-size photo, since beside the text the tracklist is too small
-     to read. -->
-<figure class="essay-aside">
-	<div class="row gtr-uniform">
-		<div class="col-6 col-12-small">
-			<a href="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" class="image fit"><img src="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" alt="Front of the Salvage 'Searchlights' CD single slipcase: the band name twice in white block letters on red, above the title" /></a>
-		</div>
-		<div class="col-6 col-12-small">
-			<a href="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" class="image fit"><img src="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" alt="Back of the slipcase: tracks Searchlights (3:26) and Electric (3:49), production credits, band line-up, Despatches Records and a barcode" /></a>
-		</div>
-	</div>
-</figure>
+[![Front of the Salvage 'Searchlights' CD single slipcase: the band name twice in white block letters on red, above the title](/images/writing/search-for-salvage/front.jpg)](/images/writing/search-for-salvage/front.jpg) [![Back of the slipcase: tracks Searchlights (3:26) and Electric (3:49), production credits, band line-up, Despatches Records and a barcode](/images/writing/search-for-salvage/back.jpg)](/images/writing/search-for-salvage/back.jpg)
 
 I hope that no-one will have to search for this band again.
 

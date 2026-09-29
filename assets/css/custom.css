@@ -171,7 +171,7 @@ form ul.actions {
    Zoe page). Within it, text is held to a 42rem column on the left: long
    lines are hard to read, because the eye loses its place moving from the
    end of one line to the start of the next, and ~80 characters is about the
-   comfortable limit. Figures (`.essay-aside`) use the space to the right of
+   comfortable limit. Pictures use the space to the right of
    that column on wide screens — see further down. */
 .essay-body > *,
 .essay-index .essay-entry,
@@ -247,43 +247,58 @@ form ul.actions {
 		margin-bottom: 0.25rem;
 	}
 
-/* Figures in an essay: `<figure class="essay-aside">`.
+/* Pictures in an essay.
 
-   Wide screens (1281px and up): the figure floats into the space to the
-   right of the text column, starting level with the paragraph that follows
-   it in the source. Narrower screens: it stays in the text flow, where it
-   was written, at the width of the text column.
+   Written as plain Markdown, with no HTML or classes in the essay itself:
 
-   The 1281px threshold is where the theme's content width leaves enough
-   room beside a 42rem text column for pictures to be worth looking at
-   (roughly 430px and up). */
-.essay-aside {
-	margin: 0 0 2rem 0;
+       ![Description of the picture](/images/writing/slug/picture.jpg)
+
+   or, to let readers click through to the full-size file:
+
+       [![Description](/images/.../picture.jpg)](/images/.../picture.jpg)
+
+   Any paragraph containing a picture becomes a picture block. Several
+   pictures in one paragraph (on one line, separated by a space) sit side
+   by side. Pictures are never enlarged beyond their own size, so a small
+   image stays small rather than turning to blur.
+
+   Placement: at 1281px and wider the block floats into the space to the
+   right of the text column, level with the paragraph that FOLLOWS it in the
+   file — so put a picture just before the text it belongs beside. Narrower
+   than that, it stays in the text flow where it was written; on phones,
+   side-by-side pictures stack.
+
+   Uses :has(), supported by every current browser. An older browser just
+   shows the pictures inline in the text, which is a sensible fallback. */
+.essay-body p:has(img) {
+	display: flex;
+	gap: 1rem;
+	align-items: flex-start;
 }
 
-	/* The theme's grid strips the bottom margin from the last element in each
-	   column and a .row adds none, so without this the next paragraph sat
-	   flush against the pictures. The figure's own margin supplies the gap. */
-	.essay-aside .row {
-		margin-bottom: 0;
+	.essay-body p:has(img) > * {
+		flex: 0 1 auto;
+		min-width: 0;
+		max-width: 100%;
 	}
 
-	/* The surviving cover art is 125px square. Shown at a modest size rather
-	   than stretched to fill the space, where it would just be blur. */
-	.essay-aside-small .image img {
-		width: 12rem;
+	.essay-body p:has(img) img {
+		display: block;
 		max-width: 100%;
 		height: auto;
+		/* Same rounding as the theme's own images. */
+		border-radius: 6px;
 	}
 
-	/* Linked images are pictures, not text links: no dotted underline. */
-	.essay-aside a.image {
+	/* Pictures that link to their full-size file are not text links: no
+	   dotted underline. */
+	.essay-body p:has(img) a {
 		border-bottom: 0;
 	}
 
 @media screen and (min-width: 1281px) {
 
-	.essay-aside {
+	.essay-body p:has(img) {
 		float: right;
 		clear: right;
 		/* Everything to the right of the 42rem text column, less a 3rem gap. */
@@ -294,6 +309,13 @@ form ul.actions {
 
 }
 
+@media screen and (max-width: 736px) {
+
+	.essay-body p:has(img) {
+		flex-direction: column;
+	}
+
+}
 
 /* --------------------------------------------------------------------------
    Body text: weight and line spacing, site-wide.
@@ -328,4 +350,25 @@ blockquote,
 .wrapper strong,
 .wrapper b {
 	font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Headings inside running text: more space above than below.
+
+   With the theme's spacing, a heading in the middle of an essay had 2rem
+   above it (the previous paragraph's margin) and 1.5rem below — nearly
+   equal, so it floated between two sections rather than reading as the
+   start of the one below it.
+
+   Applies to any heading that directly follows text, anywhere on the site.
+   The other pages open each section with its own header block, so nothing
+   there matches; in practice this affects essays, and any future page
+   written as continuous text.
+   -------------------------------------------------------------------------- */
+
+:is(p, ul, ol, blockquote) + :is(h2, h3, h4) {
+	/* Vertical margins between siblings collapse to the larger of the two,
+	   so this REPLACES the paragraph's 2rem rather than adding to it. */
+	margin-top: 4rem;
+	margin-bottom: 1rem;
 }
