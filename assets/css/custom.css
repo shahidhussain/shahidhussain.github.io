@@ -159,3 +159,86 @@ form ul.actions {
 		}
 
 }
+
+/* --------------------------------------------------------------------------
+   Writing: essay pages and the /writing/all/ index.
+   -------------------------------------------------------------------------- */
+
+/* Reading width.
+
+   The theme's content column is 75rem, roughly 1400px — right for the
+   homepage's two-column layout, far too wide for prose, where long lines make
+   the eye lose its place moving to the next one. This narrows essays and the
+   index to a comfortable reading measure.
+
+   Only `width` is overridden. The theme's `max-width` rules, which pull the
+   column in from the screen edges on smaller screens, still apply — so this
+   stays safe on phones. */
+.wrapper.essay > .inner,
+.wrapper.essay-index > .inner {
+	width: 38rem;
+}
+
+/* Titles are links (to the essay's own page) but should read as headings,
+   not as links: no dotted underline, same colour as an unlinked heading. */
+.essay header.major h1 a,
+.essay-index .essay-entry h2 a {
+	color: inherit;
+	border-bottom: 0;
+}
+
+	.essay-index .essay-entry h2 a:hover {
+		opacity: 0.75;
+	}
+
+/* Publication date: secondary to the title.
+
+   Specificity matters here. The theme styles every paragraph in a section
+   header with `header.major p { margin: 0 0 6rem 0; }`, which outranks a plain
+   `.essay-date` selector — an earlier version of this rule lost silently and
+   left a 96px gap under the date. The selector below is deliberately more
+   specific than the theme's. */
+.essay header.major p.essay-date,
+.essay-index p.essay-date {
+	font-size: 0.9em;
+	opacity: 0.7;
+}
+
+	/* Gap between the date and the first paragraph of the essay. */
+	.essay header.major p.essay-date {
+		margin-bottom: 3rem;
+	}
+
+	.essay-index p.essay-date {
+		margin-bottom: 0.5rem;
+	}
+
+/* Lift the heading, matching the homepage's "Selected work" section: the
+   theme's 8rem of top padding put the title a long way down the screen, and
+   on an essay that pushes the start of the text below the fold. */
+.wrapper.essay,
+.wrapper.essay-index {
+	padding-top: 5rem;
+}
+
+@media screen and (max-width: 736px) {
+
+	.wrapper.essay,
+	.wrapper.essay-index {
+		padding-top: 3.5rem;
+	}
+
+}
+
+/* Index entries: spacing between essays. */
+.essay-index .essay-entry {
+	margin-bottom: 3rem;
+}
+
+	.essay-index .essay-entry h2 {
+		margin-bottom: 0.25rem;
+	}
+
+.essay-feed {
+	text-align: center;
+}

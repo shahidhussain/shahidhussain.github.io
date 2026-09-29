@@ -1,0 +1,79 @@
+---
+layout: default
+---
+{%- comment -%}
+  _layouts/essay.html — the page for a single essay (anything in _posts/).
+
+  Applied automatically: _config.yml gives every post this layout, and the URL
+  /writing/<slug>/. An essay file never needs to name either.
+
+  Front matter an essay can set:
+    title:            required. The page's <h1>, <title> and link-preview title.
+    description:      strongly recommended. One sentence; used as the meta
+                      description, the link-preview text, the summary on the
+                      index page and the summary in the RSS feed.
+    image:            optional. Used ONLY for link previews (og:image). It is
+                      not displayed on the page — put images in the body.
+    last_modified_at: optional, e.g. 2026-11-02. Shows an "Updated" date and is
+                      reported to search engines as dateModified.
+
+  The publication date comes from the filename (YYYY-MM-DD-slug.md).
+{%- endcomment -%}
+
+<section class="wrapper style1 essay">
+	<div class="inner">
+
+		<header class="major special">
+			{%- comment -%}
+				The title links to this essay's own page. On the page itself that
+				is a self-link, which is harmless; it keeps the rule simple that an
+				essay's title links to its page wherever it appears.
+			{%- endcomment -%}
+			<h1><a href="{{ page.url | relative_url }}">{{ page.title }}</a></h1>
+			<p class="essay-date">
+				<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
+				{%- if page.last_modified_at %}
+				&middot; Updated <time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%-d %B %Y" }}</time>
+				{%- endif %}
+			</p>
+		</header>
+
+		<div class="essay-body">
+			{{ content }}
+		</div>
+
+		<hr class="major" />
+
+		{%- comment -%}
+			Previous / Index / Next.
+
+			READ THIS BEFORE CHANGING IT — the direction is the opposite of
+			Jekyll's own naming:
+
+			  The site presents essays newest-first, so reading "onwards" means
+			  going BACK in time. On this site:
+			    "Previous" = the NEWER essay  (Jekyll calls this page.next)
+			    "Next"     = the OLDER essay  (Jekyll calls this page.previous)
+
+			Jekyll names them chronologically; this site names them in reading
+			order. The swap below is deliberate.
+
+			Each button is omitted when there is nothing in that direction, so the
+			newest essay has no "Previous" and the oldest has no "Next". The
+			aria-label gives screen-reader users the destination essay's title,
+			since "Next" alone does not say where it goes.
+		{%- endcomment -%}
+		<nav class="essay-nav" aria-label="More writing">
+			<ul class="actions special">
+				{%- if page.next %}
+				<li><a href="{{ page.next.url | relative_url }}" class="button" aria-label="Previous: {{ page.next.title | escape }}">Previous</a></li>
+				{%- endif %}
+				<li><a href="{{ '/writing/all/' | relative_url }}" class="button">Index</a></li>
+				{%- if page.previous %}
+				<li><a href="{{ page.previous.url | relative_url }}" class="button" aria-label="Next: {{ page.previous.title | escape }}">Next</a></li>
+				{%- endif %}
+			</ul>
+		</nav>
+
+	</div>
+</section>

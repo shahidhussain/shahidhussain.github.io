@@ -1,0 +1,58 @@
+---
+# ============================================================================
+#  /writing/ — forwards straight to the newest essay.
+#
+#  WHY A REDIRECT RATHER THAN SHOWING THE ESSAY HERE:
+#  If this page rendered the newest essay itself, the same text would live at
+#  two URLs (/writing/ and /writing/<slug>/), and the first of those changes
+#  every time something new is published. Search engines would have to guess
+#  which is the real page, and anyone who copied /writing/ from the address
+#  bar to share an essay would be sharing a link that later shows a different
+#  one.
+#
+#  Forwarding instead means the reader lands on the essay's permanent URL,
+#  so whatever they copy and share keeps working, and there is only ever one
+#  copy of each essay for search engines to index.
+#
+#  The destination is worked out at build time from the newest file in
+#  _posts/, so this file never needs editing when you publish.
+#
+#  It uses no layout: it is a redirect stub, not a page anyone reads. It is
+#  excluded from the sitemap because it is not a real destination.
+# ============================================================================
+layout: null
+permalink: /writing/
+sitemap: false
+---
+{%- comment -%}
+  The newest essay, or the index if nothing is published yet.
+  site.posts is sorted newest first.
+{%- endcomment -%}
+{%- assign latest = site.posts.first -%}
+{%- if latest -%}
+  {%- assign target = latest.url -%}
+{%- else -%}
+  {%- assign target = "/writing/all/" -%}
+{%- endif -%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Writing | {{ site.title }}</title>
+{%- comment -%}
+  Three layers, so the forward works everywhere:
+    canonical     - tells search engines the destination is the real page
+    meta refresh  - works with JavaScript disabled
+    location.replace - instant, and REPLACES this entry in the browser
+                       history, so the Back button does not bounce the reader
+                       straight back here and forward again
+  This is the same approach GitHub's own jekyll-redirect-from plugin uses.
+{%- endcomment %}
+<link rel="canonical" href="{{ target | absolute_url }}" />
+<meta http-equiv="refresh" content="0; url={{ target | relative_url }}" />
+<script>location.replace("{{ target | relative_url }}");</script>
+</head>
+<body>
+<p><a href="{{ target | relative_url }}">Read the latest essay</a></p>
+</body>
+</html>
