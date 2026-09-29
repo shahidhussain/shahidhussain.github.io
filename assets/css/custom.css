@@ -28,19 +28,11 @@
    The theme's drop shadow on .image is deliberately NOT overridden, so the
    images keep it.
 
-   Corners are slightly rounded (0.5rem). The radius is set on BOTH the
-   container and the image because the container is what clips.
+   Corner rounding and shadow are set in the shared "Pictures" rule at the
+   end of this file.
    -------------------------------------------------------------------------- */
 
-.spotlights section .image {
-	border-radius: 0.5rem;
-}
-
-	.spotlights section .image img {
-		/* Must match the container's radius: the container is what clips the
-		   image, so a mismatch leaves square corners poking out from behind a
-		   rounded box. */
-		border-radius: 0.5rem;
+.spotlights section .image img {
 		/* Natural proportions: no forced 1:1 box and no cropping. The theme
 		   already sets width:100%, so height follows the aspect ratio. */
 		height: auto;
@@ -286,8 +278,8 @@ form ul.actions {
 		display: block;
 		max-width: 100%;
 		height: auto;
-		/* Same rounding as the theme's own images. */
-		border-radius: 6px;
+		/* Shadow and rounded corners come from the shared picture rule at the
+		   end of this file. */
 	}
 
 	/* Pictures that link to their full-size file are not text links: no
@@ -372,3 +364,33 @@ blockquote,
 	margin-top: 4rem;
 	margin-bottom: 1rem;
 }
+
+/* --------------------------------------------------------------------------
+   Pictures: one look for the whole site.
+
+   The same drop shadow and corner rounding for the homepage "Selected work"
+   pictures and every picture in an essay. The shadow is the theme's own
+   picture shadow, taken from the homepage spotlights, so both now read as
+   the same kind of object. Change the values here and both update.
+
+   Deliberately NOT applied to the Zoe and Zephy page: its pictures are
+   cut-out illustrations and a book mock-up that already has a shadow drawn
+   in, and a box shadow would outline their transparent edges.
+   -------------------------------------------------------------------------- */
+
+:root {
+	--picture-shadow: 0 1rem 3rem 0 rgba(0, 0, 0, 0.25);
+	--picture-radius: 0.5rem;
+}
+
+.spotlights section .image,
+.essay-body p:has(img) img {
+	box-shadow: var(--picture-shadow);
+	border-radius: var(--picture-radius);
+}
+
+	/* The spotlight container clips its image, so the image's own corners
+	   must match the container's. */
+	.spotlights section .image img {
+		border-radius: var(--picture-radius);
+	}
