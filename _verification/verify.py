@@ -35,8 +35,15 @@ check("every pre-existing URL still resolves", not missing, missing)
 
 print("\nPer-page metadata (comments stripped so commented-out tags are not counted)")
 bad = []
+stubs = []
 for f in sorted(glob.glob('_site/**/*.html', recursive=True)):
-    s = re.sub(r'<!--.*?-->', '', open(f, encoding='utf-8').read(), flags=re.S)
+    raw = open(f, encoding='utf-8').read()
+    # Redirect stubs (e.g. /writing/) are not pages anyone reads: no nav, no
+    # stylesheet, no analytics. They get their own checks below instead.
+    if 'http-equiv="refresh"' in raw:
+        stubs.append((f, raw))
+        continue
+    s = re.sub(r'<!--.*?-->', '', raw, flags=re.S)
     counts = {
         'h1':        len(re.findall(r'<h1[ >]', s)),
         'canonical': len(re.findall(r'rel="canonical"', s)),
@@ -68,6 +75,48 @@ for label, needle, hay in [
 
 check("press kit still served", os.path.isfile('_site/zoe-and-zephy/assets/zzpresskit.pdf'))
 check("CNAME present", os.path.isfile('_site/CNAME') and open('_site/CNAME').read().strip() == 'shahidhussain.com')
+
+print("\nRedirect stubs")
+for f, raw in stubs:
+    m = re.search(r'url=([^"]+)"', raw)
+    target = m.group(1) if m else None
+    tp = '_site' + (target or '')
+    ok = bool(target) and any(os.path.isfile(c) for c in [tp, tp + 'index.html'])
+    check(f"{f.replace('_site', '')} forwards to a real page ({target})", ok, target)
+    canon = re.search(r'rel="canonical" href="https://shahidhussain\.com([^"]+)"', raw)
+    check(f"{f.replace('_site', '')} canonical matches its destination", bool(canon) and canon.group(1) == target,
+          canon.group(1) if canon else None)
+
+print("\nWriting")
+posts = sorted(glob.glob('_posts/*.md'), reverse=True)   # newest first, by filename date
+essay_pages = []
+for post in posts:
+    slug = re.sub(r'^\d{4}-\d{2}-\d{2}-', '', os.path.basename(post))[:-3]
+    page = f'_site/writing/{slug}/index.html'
+    essay_pages.append((slug, page))
+    exists = os.path.isfile(page)
+    check(f"essay '{slug}' published at /writing/{slug}/", exists)
+    if not exists:
+        continue
+    h = open(page, encoding='utf-8').read()
+    check(f"essay '{slug}' shows a machine-readable date", '<time datetime="' in h)
+    check(f"essay '{slug}' is marked up as a BlogPosting", '"@type":"BlogPosting"' in h)
+    check(f"essay '{slug}' has a meta description", '<meta name="description"' in h)
+    check(f"essay '{slug}' links to the index", 'href="/writing/all/"' in h)
+    front = open(post, encoding='utf-8').read().split('---')[1]
+    check(f"essay '{slug}' sets a description in front matter", re.search(r'^description:', front, re.M) is not None)
+
+if essay_pages:
+    newest = f'/writing/{essay_pages[0][0]}/'
+    stub = open('_site/writing/index.html', encoding='utf-8').read() if os.path.isfile('_site/writing/index.html') else ''
+    check("/writing/ forwards to the NEWEST essay", f'url={newest}"' in stub, newest)
+    idx = open('_site/writing/all/index.html', encoding='utf-8').read() if os.path.isfile('_site/writing/all/index.html') else ''
+    check("index page lists every essay", all(f'/writing/{sl}/' in idx for sl, _ in essay_pages))
+    feed = open('_site/feed.xml', encoding='utf-8').read() if os.path.isfile('_site/feed.xml') else ''
+    check("RSS feed lists every essay", all(f'/writing/{sl}/' in feed for sl, _ in essay_pages))
+    sm = open('_site/sitemap.xml', encoding='utf-8').read()
+    check("sitemap lists every essay and the index", all(f'/writing/{sl}/' in sm for sl, _ in essay_pages) and '/writing/all/' in sm)
+    check("sitemap omits the /writing/ redirect", '<loc>https://shahidhussain.com/writing/</loc>' not in sm)
 
 print()
 if FAIL:

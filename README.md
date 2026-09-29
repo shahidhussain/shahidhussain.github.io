@@ -17,7 +17,10 @@ them, so a change to the nav is a one-line edit rather than a find-and-replace.
 | `_config.yml` | Site-wide settings: URL, title, analytics token, plugins. **Restart `jekyll serve` after editing this** — it is the only file that does not hot-reload. |
 | `_data/navigation.yml` | **The nav.** Single source of truth. Edit here, it changes everywhere. |
 | `_includes/` | Reusable fragments: `head.html`, `header.html` (nav), `footer.html`, `scripts.html`, `analytics.html` |
-| `_layouts/` | Page skeletons: `default.html` (all pages), `page.html` (standard content) |
+| `_layouts/` | Page skeletons: `default.html` (all pages), `page.html` (standard content), `essay.html` (one essay) |
+| `_posts/` | **Essays.** One Markdown file each. |
+| `writing/index.html` | `/writing/` — forwards to the newest essay. Never needs editing. |
+| `writing/all/index.html` | `/writing/all/` — the index of every essay. Never needs editing. |
 | `index.html` | Homepage, served at `/` |
 | `zoe-and-zephy/index.html` | Book page, served at `/zoe-and-zephy/` |
 | `assets/` | The Hyperbolic theme (CSS, JS, fonts) — **do not edit `main.css`** |
@@ -43,38 +46,50 @@ Create an HTML file with front matter setting `layout`, `permalink`, `title` and
 directly; the layout supplies the heading and section wrapper. Then add it to
 `_data/navigation.yml` if it belongs in the nav.
 
-## Restoring the writing section
+## Publishing an essay
 
-The site previously had an essay section at `/writing/`, removed while there was
-no content for it. It is preserved in git history and can be restored with:
-
-```bash
-git checkout 7e81fb7 -- writing _posts _layouts/essay.html
-```
-
-That brings back the essay index, the annotated example essay, and the essay
-layout. Two things then need re-adding by hand, because they were edited rather
-than deleted:
-
-1. `_config.yml` — the posts permalink and layout default:
+1. Create `_posts/YYYY-MM-DD-your-slug.md`. The date is the publication date;
+   the slug becomes the URL: `/writing/your-slug/`.
+2. Put front matter at the top:
 
    ```yaml
-   permalink: /writing/:title/
-
-   defaults:
-     - scope:
-         path: ""
-         type: "posts"
-       values:
-         layout: "essay"
+   ---
+   title: "Your title"
+   description: "One sentence. Shown in Google results, link previews, the index and the RSS feed."
+   # image: /images/writing/your-slug/cover.jpg   # optional: link-preview image only
+   ---
    ```
 
-2. `_data/navigation.yml` — the nav entry:
+3. Write the body in Markdown underneath. Start section headings at `##` —
+   the title is already the page's `<h1>`.
+4. Commit and push.
 
-   ```yaml
-   - title: Writing
-     url: /writing/
-   ```
+That's all. On the next build the essay gets its own page, `/writing/` starts
+forwarding to it, the previous newest essay gains a link to it, and it's added
+to `/writing/all/`, `sitemap.xml` and `feed.xml`. Nothing else needs editing.
+
+To preview first: `bundle exec jekyll serve`, then open
+<http://localhost:4000/writing/>.
+
+**Things that will catch you out:**
+
+- **Don't rename an essay's file after publishing.** The filename *is* the URL,
+  so renaming it breaks every link anyone has shared. Fix a title by changing
+  `title:`, not the filename.
+- **Future dates don't publish.** Jekyll skips essays dated after the build,
+  and GitHub only builds when you push. An essay dated tomorrow won't appear
+  until your first push *on or after* tomorrow. Preview one locally with
+  `bundle exec jekyll serve --future`.
+- **Revising an essay?** Add `last_modified_at: YYYY-MM-DD` to its front
+  matter. It shows an "Updated" date and tells search engines it changed.
+
+### Previous and Next
+
+Essays are read newest-first, so the buttons are named in *reading* order:
+**Previous** goes to the newer essay, **Next** to the older one. That is the
+reverse of Jekyll's own `page.next` / `page.previous`, which are chronological
+— so `_layouts/essay.html` deliberately swaps them. See the comment there
+before changing it.
 
 ## Running it locally
 
