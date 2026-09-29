@@ -19,5 +19,10 @@
 - title: Home
   url: /
 
+# /writing/ always forwards to the newest essay (see writing/index.html), so
+# this link needs no updating when a new essay is published.
+- title: Writing
+  url: /writing/
+
 - title: Zoe and Zephy
   url: /zoe-and-zephy/

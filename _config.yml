@@ -62,6 +62,9 @@ theme:
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
+  # Generates /feed.xml (an Atom feed of every essay) so readers can follow
+  # the writing section in a feed reader. Also on GitHub Pages' allowlist.
+  - jekyll-feed
 
 # ----------------------------------------------------------------------------
 #  URLs.
@@ -69,8 +72,8 @@ plugins:
 #  Every page sets its own `permalink` in front matter, so URLs are explicit
 #  and cannot drift with Jekyll's defaults.
 #
-#  NOTE: the /writing/ essay section was removed for now. To bring it back,
-#  see the "Restoring the writing section" note in README.md.
+#  Essays are the exception: they get their URL pattern from the `defaults`
+#  block below, so an essay file never has to state it.
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
@@ -78,6 +81,20 @@ plugins:
 #  contain ONLY its content — the layout is assigned here, once.
 # ----------------------------------------------------------------------------
 defaults:
+  # Every essay in _posts/ gets the essay layout and publishes at
+  # /writing/<slug>/, where <slug> is the filename minus its date prefix:
+  #   _posts/2026-09-29-search-for-salvage.md  ->  /writing/search-for-salvage/
+  #
+  # Scoped to posts on purpose, so this pattern can never affect any other
+  # page. Once an essay is published, do not rename its file: the filename IS
+  # the URL, and renaming it breaks every existing link to the essay.
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "essay"
+      permalink: /writing/:title/
+
   # The press kit PDF is kept at its original URL so previously-shared links
   # keep working, but it is retired: it is no longer linked from any page, so
   # it is also excluded from the sitemap rather than being actively advertised
