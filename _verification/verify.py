@@ -76,6 +76,18 @@ for label, needle, hay in [
 check("press kit still served", os.path.isfile('_site/zoe-and-zephy/assets/zzpresskit.pdf'))
 check("CNAME present", os.path.isfile('_site/CNAME') and open('_site/CNAME').read().strip() == 'shahidhussain.com')
 
+print("\nImages")
+# Every <img> on every page must point at a file that exists in the build.
+# Catches a typo in an image path, or an image referenced before it is added.
+broken = []
+for f in glob.glob('_site/**/*.html', recursive=True):
+    for src in re.findall(r'<img[^>]+src="([^"]+)"', open(f, encoding='utf-8').read()):
+        if src.startswith('http'):
+            continue
+        if not os.path.isfile('_site' + src.split('?')[0]):
+            broken.append(f"{f.replace('_site', '')} -> {src}")
+check("every image on every page exists", not broken, broken)
+
 print("\nRedirect stubs")
 for f, raw in stubs:
     m = re.search(r'url=([^"]+)"', raw)

@@ -242,3 +242,13 @@ form ul.actions {
 .essay-feed {
 	text-align: center;
 }
+
+/* Image rows inside an essay (e.g. two pictures side by side).
+
+   Same cause as the contact form's cramped button: the theme's grid strips
+   the bottom margin from the last element in each column, and a .row adds
+   none of its own, so the next paragraph sat flush against the images.
+   Applies to every grid row in an essay body, so future essays get it too. */
+.essay-body .row {
+	margin-bottom: 2rem;
+}

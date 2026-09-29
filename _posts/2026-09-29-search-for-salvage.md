@@ -3,9 +3,9 @@
 #   2026-09-29-search-for-salvage.md  ->  29 September 2026, /writing/search-for-salvage/
 # Do not rename this file once published; the name is the URL.
 title: "The Search for Salvage"
-description: "For 15 years I couldn't trace a band called Salvage. Two AI models, a misspelled credits page and one generous record producer finally cracked it."
-# TODO when images arrive: set a link-preview image, e.g.
-# image: /images/writing/search-for-salvage/cover.jpg
+description: "15 years ago, a band called Salvage dropped an epic song, and then vanished without a trace. Until now."
+# Link-preview image (og:image) only; it is not displayed by the layout.
+image: /images/writing/search-for-salvage/front.jpg
 ---
 
 In 2011 I heard a piece of music that didn't make any sense. 
@@ -128,7 +128,17 @@ Q: How are you getting the sense of space in the record production? Reverb, dual
 
 Greg kindly shared some high resolution images of the front *and back* of the CD slipcase, which I've reproduced here.
 
-{% comment %}IMAGES PENDING: front and back of the CD slipcase go here.{% endcomment %}
+<!-- Front and back side by side, using the theme's grid: two half-width
+     columns on desktop and tablet, stacking to full width on phones
+     (col-12-small). `image fit` makes each fill its column. -->
+<div class="row gtr-uniform essay-images">
+	<div class="col-6 col-12-small">
+		<span class="image fit"><img src="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" alt="Front of the Salvage 'Searchlights' CD single slipcase: the band name twice in white block letters on red, above the title" /></span>
+	</div>
+	<div class="col-6 col-12-small">
+		<span class="image fit"><img src="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" alt="Back of the slipcase: tracks Searchlights (3:26) and Electric (3:49), production credits, band line-up, Despatches Records and a barcode" /></span>
+	</div>
+</div>
 
 I hope that no-one will have to search for this band again.
 
