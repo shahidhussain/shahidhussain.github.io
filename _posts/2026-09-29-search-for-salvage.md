@@ -12,6 +12,14 @@ In 2011 I heard a piece of music that didn't make any sense.
 
 The music was a perfect piece of stadium indie rock -- thoughtful but expansive, layered yet elegantly simple. The band was Salvage, and the two tracks on the CD I bought were called "Electric" and "Searchlights".
 
+<!-- The cover art in the only copy that survived: 125x124px. Shown small on
+     purpose; enlarging it would only show the blur. `essay-aside` places it
+     beside the text on wide screens and inline below this paragraph on
+     narrower ones (see custom.css). -->
+<figure class="essay-aside essay-aside-small">
+	<span class="image"><img src="{{ '/images/writing/search-for-salvage/cover-lowres.jpg' | relative_url }}" alt="The Salvage 'Searchlights' cover art, in the low-resolution copy that survived" width="125" height="124" /></span>
+</figure>
+
 For the last 15 years, these tracks have been a maddening contradiction. They are professionally produced -- someone with obvious skill spent time and effort on these tracks. I wanted to find out who, and hear more of this goodness. I wanted to find out where they went. And I wanted to know why they were so darn hard to find -- was it a side project by a session band? A producer with an idea and a spare few weeks?
 
 Every few years, I would start a new search, convinced that there was an answer somewhere, and that I was missing a trick. If I just tried again, I would find it. And given where I work, you would expect that I would be good at finding things online.
@@ -128,17 +136,21 @@ Q: How are you getting the sense of space in the record production? Reverb, dual
 
 Greg kindly shared some high resolution images of the front *and back* of the CD slipcase, which I've reproduced here.
 
-<!-- Front and back side by side, using the theme's grid: two half-width
-     columns on desktop and tablet, stacking to full width on phones
-     (col-12-small). `image fit` makes each fill its column. -->
-<div class="row gtr-uniform essay-images">
-	<div class="col-6 col-12-small">
-		<span class="image fit"><img src="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" alt="Front of the Salvage 'Searchlights' CD single slipcase: the band name twice in white block letters on red, above the title" /></span>
+<!-- Front and back of the slipcase. `essay-aside` puts the pair beside the
+     text on wide screens; on narrower screens it drops back into the text
+     flow, side by side, and stacks on phones (col-12-small). Each image links
+     to the full-size photo, since beside the text the tracklist is too small
+     to read. -->
+<figure class="essay-aside">
+	<div class="row gtr-uniform">
+		<div class="col-6 col-12-small">
+			<a href="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" class="image fit"><img src="{{ '/images/writing/search-for-salvage/front.jpg' | relative_url }}" alt="Front of the Salvage 'Searchlights' CD single slipcase: the band name twice in white block letters on red, above the title" /></a>
+		</div>
+		<div class="col-6 col-12-small">
+			<a href="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" class="image fit"><img src="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" alt="Back of the slipcase: tracks Searchlights (3:26) and Electric (3:49), production credits, band line-up, Despatches Records and a barcode" /></a>
+		</div>
 	</div>
-	<div class="col-6 col-12-small">
-		<span class="image fit"><img src="{{ '/images/writing/search-for-salvage/back.jpg' | relative_url }}" alt="Back of the slipcase: tracks Searchlights (3:26) and Electric (3:49), production credits, band line-up, Despatches Records and a barcode" /></span>
-	</div>
-</div>
+</figure>
 
 I hope that no-one will have to search for this band again.
 

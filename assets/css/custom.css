@@ -164,20 +164,28 @@ form ul.actions {
    Writing: essay pages and the /writing/all/ index.
    -------------------------------------------------------------------------- */
 
-/* Reading width.
+/* Layout: the same width as the Zoe and Zephy page, left-aligned, with
+   pictures beside the text.
 
-   The theme's content column is 75rem, roughly 1400px — right for the
-   homepage's two-column layout, far too wide for prose, where long lines make
-   the eye lose its place moving to the next one. This narrows essays and the
-   index to a comfortable reading measure.
-
-   Only `width` is overridden. The theme's `max-width` rules, which pull the
-   column in from the screen edges on smaller screens, still apply — so this
-   stays safe on phones. */
-.wrapper.essay > .inner,
-.wrapper.essay-index > .inner {
-	width: 38rem;
+   The container is the theme's standard content width (75rem, as on the
+   Zoe page). Within it, text is held to a 42rem column on the left: long
+   lines are hard to read, because the eye loses its place moving from the
+   end of one line to the start of the next, and ~80 characters is about the
+   comfortable limit. Figures (`.essay-aside`) use the space to the right of
+   that column on wide screens — see further down. */
+.essay-body > *,
+.essay-index .essay-entry,
+.essay-index .essay-feed {
+	max-width: 42rem;
 }
+
+	/* Contain floated figures, so the bottom navigation never rides up beside
+	   a picture that is taller than the text next to it. */
+	.essay-body::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
 
 /* Titles are links (to the essay's own page) but should read as headings,
    not as links: no dotted underline, same colour as an unlinked heading. */
@@ -239,16 +247,49 @@ form ul.actions {
 		margin-bottom: 0.25rem;
 	}
 
-.essay-feed {
-	text-align: center;
+/* Figures in an essay: `<figure class="essay-aside">`.
+
+   Wide screens (1281px and up): the figure floats into the space to the
+   right of the text column, starting level with the paragraph that follows
+   it in the source. Narrower screens: it stays in the text flow, where it
+   was written, at the width of the text column.
+
+   The 1281px threshold is where the theme's content width leaves enough
+   room beside a 42rem text column for pictures to be worth looking at
+   (roughly 430px and up). */
+.essay-aside {
+	margin: 0 0 2rem 0;
 }
 
-/* Image rows inside an essay (e.g. two pictures side by side).
+	/* The theme's grid strips the bottom margin from the last element in each
+	   column and a .row adds none, so without this the next paragraph sat
+	   flush against the pictures. The figure's own margin supplies the gap. */
+	.essay-aside .row {
+		margin-bottom: 0;
+	}
 
-   Same cause as the contact form's cramped button: the theme's grid strips
-   the bottom margin from the last element in each column, and a .row adds
-   none of its own, so the next paragraph sat flush against the images.
-   Applies to every grid row in an essay body, so future essays get it too. */
-.essay-body .row {
-	margin-bottom: 2rem;
+	/* The surviving cover art is 125px square. Shown at a modest size rather
+	   than stretched to fill the space, where it would just be blur. */
+	.essay-aside-small .image img {
+		width: 12rem;
+		max-width: 100%;
+		height: auto;
+	}
+
+	/* Linked images are pictures, not text links: no dotted underline. */
+	.essay-aside a.image {
+		border-bottom: 0;
+	}
+
+@media screen and (min-width: 1281px) {
+
+	.essay-aside {
+		float: right;
+		clear: right;
+		/* Everything to the right of the 42rem text column, less a 3rem gap. */
+		width: calc(100% - 45rem);
+		max-width: none;
+		margin: 0.35rem 0 2rem 3rem;
+	}
+
 }

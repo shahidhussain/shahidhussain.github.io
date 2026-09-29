@@ -23,7 +23,12 @@ layout: default
 <section class="wrapper style1 essay">
 	<div class="inner">
 
-		<header class="major special">
+		{%- comment -%}
+			`header.major` without the theme's `special` modifier, which would
+			centre it: the title, its divider and the date sit on the left edge
+			with the text below.
+		{%- endcomment -%}
+		<header class="major">
 			{%- comment -%}
 				The title links to this essay's own page. On the page itself that
 				is a self-link, which is harmless; it keeps the rule simple that an
@@ -64,7 +69,7 @@ layout: default
 			since "Next" alone does not say where it goes.
 		{%- endcomment -%}
 		<nav class="essay-nav" aria-label="More writing">
-			<ul class="actions special">
+			<ul class="actions">
 				{%- if page.next %}
 				<li><a href="{{ page.next.url | relative_url }}" class="button" aria-label="Previous: {{ page.next.title | escape }}">Previous</a></li>
 				{%- endif %}
