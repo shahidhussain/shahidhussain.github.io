@@ -140,3 +140,5 @@ Huge, massive thanks to both Greg and Sam for connecting and responding, and add
 
  - If you want to hear more of Greg's work, [check out his showreel](https://www.record-producers.com/roster/greg-haver/).
  - If you want to hear more of Sam / Jon and Matt's work, check out OK Tokyo on [YouTube](https://www.youtube.com/watch?v=Fo-mADW8EhU),  [Spotify](https://open.spotify.com/artist/1sjt37AQVwnnZDrdxk79Lf), or Glacier and Summit on [Spotify](https://open.spotify.com/artist/4TCPqUO68RnytvWH5yKyw4) or [Apple Music](https://music.apple.com/us/artist/glacier-summit/1436892530)
+
+This article was not written by AI.
