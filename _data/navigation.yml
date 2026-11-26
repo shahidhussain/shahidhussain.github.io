@@ -24,5 +24,12 @@
 - title: Writing
   url: /writing/
 
-- title: Zoe and Zephy
-  url: /zoe-and-zephy/
+# Projects: a dropdown on desktop, an indented group in the mobile menu.
+# The parent link goes to /projects/, which lists every project.
+- title: Projects
+  url: /projects/
+  children:
+    - title: Platen Reader
+      url: /projects/platen-reader/
+    - title: Zoe and Zephy
+      url: /projects/zoe-and-zephy/

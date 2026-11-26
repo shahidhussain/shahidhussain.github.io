@@ -1,8 +1,16 @@
 ---
 # ============================================================================
-#  Zoe and Zephy book page. Serves at "/zoe-and-zephy/" — unchanged from
-#  before the refactor. This URL is linked from Amazon, Barnes & Noble,
-#  Walmart and the press kit, so it must never move.
+#  Zoe and Zephy book page. Serves at "/projects/zoe-and-zephy/" (moved
+#  under Projects in November 2026).
+#
+#  The old URL, /zoe-and-zephy/, is linked from Amazon, Barnes & Noble,
+#  Walmart and the press kit, so it MUST keep working: `redirect_from` below
+#  makes jekyll-redirect-from publish a page there that forwards here and
+#  names this page as canonical. Never remove that line.
+#
+#  The page's images, favicons and the retired press kit PDF deliberately
+#  stay at their old paths under /zoe-and-zephy/, so links to those files
+#  from elsewhere keep working too.
 #
 #  `favicons: true` opts this page into the Zoe-branded favicon and web
 #  manifest set (see _includes/head.html). They are page-scoped rather than
@@ -12,7 +20,9 @@
 #  rather than the single generic content wrapper.
 # ============================================================================
 layout: default
-permalink: /zoe-and-zephy/
+permalink: /projects/zoe-and-zephy/
+redirect_from:
+  - /zoe-and-zephy/
 title: "Zoe and Zephy - a kids storybook about AI"
 description: "Discover Zoe and Zephy, a childrens picture book following a curious girl as she finds out more about what her AI helper can and can’t do."
 image: /zoe-and-zephy/images/bookmock.webp

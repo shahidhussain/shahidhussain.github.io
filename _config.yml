@@ -65,6 +65,12 @@ plugins:
   # Generates /feed.xml (an Atom feed of every essay) so readers can follow
   # the writing section in a feed reader. Also on GitHub Pages' allowlist.
   - jekyll-feed
+  # Publishes a forwarding page at an old URL when a page moves: list the
+  # old path under `redirect_from:` in the page's front matter. GitHub Pages
+  # can't send real 301s, so the page forwards at once and names the new URL
+  # as canonical, which search engines treat as a permanent move. Also on
+  # GitHub Pages' allowlist, and already part of the github-pages gem.
+  - jekyll-redirect-from
 
 # ----------------------------------------------------------------------------
 #  URLs.

@@ -15,7 +15,6 @@
 .platen {
 	--platen-muted: rgba(0, 0, 0, 0.6);
 	--platen-border: rgba(0, 0, 0, 0.125);     /* the theme's border colour */
-	--platen-outline: rgba(0, 0, 0, 0.25);
 	--platen-radius: 6px;                      /* the theme's border-radius */
 	--platen-shadow: var(--picture-shadow, 0 1rem 3rem 0 rgba(0, 0, 0, 0.25));
 	/* A book-like serif from the reader's own system: no web font to load. */
@@ -48,33 +47,23 @@
 	}
 
 /* --------------------------------------------------------------------------
-   Download area: "coming soon" badges. Deliberately not links or buttons,
-   and styled so they do not look clickable: outlined, muted, no hover.
+   Download area: "coming soon" badges.
+
+   These use the theme's own outlined `.button` inside `ul.actions`, the same
+   markup as the buttons on the Zoe and Zephy page. They are <span>s, not
+   links, so here they also lose the theme's hover colour and pointer: they
+   look like the site's buttons but don't invite a click. (The theme's own
+   `.disabled` class is not used: it fades a button to 25% opacity.)
    -------------------------------------------------------------------------- */
 
-.platen-badges {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 1rem;
-	margin: 0 0 1rem 0;
-	padding: 0;
+.platen .platen-soon {
+	margin-bottom: 1rem;
 }
 
-	.platen .platen-badges li {
-		list-style: none;
-		padding: 0.6rem 1.5rem;
-		border: 1px solid var(--platen-outline);
-		border-radius: var(--platen-radius);
-		color: var(--platen-muted);
-		font-size: 0.95rem;
-		line-height: 1.5;
+	.platen .platen-soon .button {
+		pointer-events: none;
 		cursor: default;
 	}
-
-		.platen-badges strong {
-			color: #000000;
-		}
 
 .platen .platen-requirements {
 	font-size: 0.85rem;
