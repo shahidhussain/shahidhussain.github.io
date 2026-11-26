@@ -1,0 +1,94 @@
+---
+# ============================================================================
+#  Platen Reader project page. Serves at /projects/platen-reader/.
+#
+#  Uses `layout: default` (like /writing/all/) because the page supplies its
+#  own section markup. Its styles live in /assets/platen/platen.css, scoped
+#  under `.platen`, and are loaded by this page and the privacy page only.
+#
+#  `image` is the link-preview picture (og:image), via jekyll-seo-tag.
+# ============================================================================
+layout: default
+permalink: /projects/platen-reader/
+title: Platen Reader
+description: "Platen Reader is a free, open source EPUB viewer for Mac and iPhone. Double-click a file and you're back on the page where you left off. No library, no importing, no account."
+image: /assets/platen/icon.png
+---
+<link rel="stylesheet" href="{{ '/assets/platen/platen.css' | relative_url }}" />
+
+<section class="wrapper style1 platen" lang="en-GB">
+	<div class="inner">
+
+		<div class="platen-hero">
+			<img class="platen-icon" src="{{ '/assets/platen/icon.png' | relative_url }}" alt="Platen Reader app icon" width="112" height="112" />
+
+			<header class="major special">
+				<h1>Open a book. Start reading.</h1>
+			</header>
+
+			<p class="platen-intro">Platen Reader is a free, open source EPUB viewer for Mac and iPhone. Double-click a file and you&rsquo;re back on the page where you left off. No library, no importing, no account.</p>
+
+			<!-- TODO: replace with DMG link and App Store badge -->
+			<ul class="platen-badges" aria-label="Downloads">
+				<li><strong>Mac</strong>: coming soon</li>
+				<li><strong>iPhone</strong>: coming soon</li>
+			</ul>
+			<p class="platen-requirements">macOS 14 or later &middot; iOS 17 or later</p>
+		</div>
+
+		<!-- TODO: replace with real screenshots -->
+		<div class="platen-shots" aria-hidden="true">
+
+			<div class="platen-mac">
+				<div class="platen-titlebar">
+					<div class="platen-dots"><span></span><span></span><span></span></div>
+					<p>The Odyssey.epub</p>
+				</div>
+				<div class="platen-book">
+					<p class="platen-book-heading">Book I</p>
+					<p class="platen-book-byline">Translated by Samuel Butler</p>
+					<p>Tell me, O muse, of that ingenious hero who travelled far and wide after he had sacked the famous town of Troy. Many cities did he visit, and many were the nations with whose manners and customs he was acquainted; moreover he suffered much by sea while trying to save his own life and bring his men safely home; but do what he might he could not save his men, for they perished through their own sheer folly in eating the cattle of the Sun-god Hyperion; so the god prevented them from ever reaching home.</p>
+				</div>
+			</div>
+
+			<div class="platen-phone">
+				<div class="platen-book">
+					<p class="platen-book-heading">Act I, Scene I</p>
+					<p><span class="platen-speaker">Bernardo</span>. Who&rsquo;s there?</p>
+					<p><span class="platen-speaker">Francisco</span>. Nay, answer me: stand, and unfold yourself.</p>
+					<p><span class="platen-speaker">Bernardo</span>. Long live the king!</p>
+					<p><span class="platen-speaker">Francisco</span>. Bernardo?</p>
+					<p><span class="platen-speaker">Bernardo</span>. He.</p>
+					<p><span class="platen-speaker">Francisco</span>. You come most carefully upon your hour.</p>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="platen-features">
+			<section>
+				<h2>Your files stay where they are</h2>
+				<p>Open a book from Finder, iCloud Drive or a network share. Platen reads it in place. Nothing gets copied into a hidden library, so there&rsquo;s nothing to tidy up later.</p>
+			</section>
+			<section>
+				<h2>Books look the way they were made</h2>
+				<p>Platen respects the publisher&rsquo;s typography by default. Change the font, margins or spacing if you like, and switch any change off again.</p>
+			</section>
+			<section>
+				<h2>Nothing to sign up for</h2>
+				<p>Free and open source under MPL 2.0. No account, no subscription and no tracking.</p>
+			</section>
+		</div>
+
+		<hr class="major" />
+
+		<p class="platen-note">Platen opens DRM-free EPUB files. Books bought from Kindle or Apple Books can&rsquo;t be opened. Looking for something to read? The app includes a list of free, well-made editions from Standard Ebooks and Project Gutenberg.</p>
+
+		<p class="platen-links">
+			<a href="https://github.com/shahidhussain/platen-reader">Source code on GitHub</a><span class="platen-sep" aria-hidden="true">&middot;</span>
+			<a href="{{ '/projects/platen-reader/privacy/' | relative_url }}">Privacy</a><span class="platen-sep" aria-hidden="true">&middot;</span>
+			<a href="mailto:platen-reader@shahidhussain.com">Support</a>
+		</p>
+
+	</div>
+</section>

@@ -1,0 +1,341 @@
+/* ==========================================================================
+   platen.css: styles for the Platen Reader pages only.
+
+   Loaded by projects/platen-reader/index.html and its privacy page, and
+   nowhere else. Every rule is scoped under `.platen`, so nothing here can
+   reach the rest of the site.
+
+   The theme (Hyperbolic, compiled to main.css) has no CSS variables of its
+   own, so its values are restated below as local variables: the border
+   colour, the 6px corner radius and the site's shared picture shadow
+   (--picture-shadow, defined in custom.css). The theme has no dark mode, so
+   neither do these pages.
+   ========================================================================== */
+
+.platen {
+	--platen-muted: rgba(0, 0, 0, 0.6);
+	--platen-border: rgba(0, 0, 0, 0.125);     /* the theme's border colour */
+	--platen-outline: rgba(0, 0, 0, 0.25);
+	--platen-radius: 6px;                      /* the theme's border-radius */
+	--platen-shadow: var(--picture-shadow, 0 1rem 3rem 0 rgba(0, 0, 0, 0.25));
+	/* A book-like serif from the reader's own system: no web font to load. */
+	--platen-book-font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+	padding-top: 5rem;  /* matches the essay pages, so the heading sits high */
+}
+
+/* --------------------------------------------------------------------------
+   Opening: icon, headline, intro.
+   -------------------------------------------------------------------------- */
+
+.platen-hero {
+	text-align: center;
+}
+
+	.platen-icon {
+		display: block;
+		width: 112px;
+		height: 112px;
+		margin: 0 auto 2rem auto;
+	}
+
+	/* The theme gives a section header's paragraph a 6rem bottom margin; the
+	   intro sits outside the header instead, so only this spacing applies. */
+	.platen .platen-intro {
+		font-size: 1.25rem;
+		color: var(--platen-muted);
+		max-width: 38rem;
+		margin: 0 auto 3rem auto;
+	}
+
+/* --------------------------------------------------------------------------
+   Download area: "coming soon" badges. Deliberately not links or buttons,
+   and styled so they do not look clickable: outlined, muted, no hover.
+   -------------------------------------------------------------------------- */
+
+.platen-badges {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 1rem;
+	margin: 0 0 1rem 0;
+	padding: 0;
+}
+
+	.platen .platen-badges li {
+		list-style: none;
+		padding: 0.6rem 1.5rem;
+		border: 1px solid var(--platen-outline);
+		border-radius: var(--platen-radius);
+		color: var(--platen-muted);
+		font-size: 0.95rem;
+		line-height: 1.5;
+		cursor: default;
+	}
+
+		.platen-badges strong {
+			color: #000000;
+		}
+
+.platen .platen-requirements {
+	font-size: 0.85rem;
+	color: var(--platen-muted);
+	margin-bottom: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Screenshots, drawn in HTML and CSS: a Mac window and an iPhone.
+   -------------------------------------------------------------------------- */
+
+.platen-shots {
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	gap: 3rem;
+	margin: 5rem 0;
+}
+
+/* Text inside both frames: set like a printed page. */
+.platen-book {
+	font-family: var(--platen-book-font);
+	color: #222222;
+	text-align: left;
+}
+
+	.platen .platen-book p {
+		font-weight: 400;
+		line-height: 1.55;
+		margin: 0;
+		text-align: justify;
+		-webkit-hyphens: auto;
+		hyphens: auto;
+	}
+
+	.platen .platen-book .platen-book-heading {
+		font-variant: small-caps;
+		letter-spacing: 0.06em;
+		font-size: 1.2em;
+		text-align: center;
+		margin-bottom: 0.4em;
+	}
+
+	.platen .platen-book .platen-book-byline {
+		font-style: italic;
+		text-align: center;
+		color: #555555;
+		margin-bottom: 1.6em;
+	}
+
+	.platen-speaker {
+		font-variant: small-caps;
+		letter-spacing: 0.04em;
+	}
+
+/* Mac window */
+.platen-mac {
+	flex: 1 1 auto;
+	max-width: 40rem;
+	min-width: 0;
+	background: #ffffff;
+	border: 1px solid var(--platen-border);
+	border-radius: 10px;
+	box-shadow: var(--platen-shadow);
+	overflow: hidden;
+}
+
+	.platen-titlebar {
+		position: relative;
+		height: 2.25rem;
+		background: #f4f4f4;
+		border-bottom: 1px solid var(--platen-border);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+		.platen-dots {
+			position: absolute;
+			left: 0.9rem;
+			top: 50%;
+			transform: translateY(-50%);
+			display: flex;
+			gap: 0.45rem;
+		}
+
+			.platen-dots span {
+				width: 0.7rem;
+				height: 0.7rem;
+				border-radius: 50%;
+				background: #cfcfcf;
+			}
+
+		.platen .platen-titlebar p {
+			margin: 0;
+			font-size: 0.8rem;
+			font-weight: 400;
+			line-height: 1;
+			color: var(--platen-muted);
+		}
+
+	.platen-mac .platen-book {
+		padding: 3rem 4rem 3.5rem 4rem;
+		font-size: 1.05rem;
+	}
+
+/* iPhone */
+.platen-phone {
+	flex: 0 0 auto;
+	width: 13rem;
+	aspect-ratio: 9 / 19.5;
+	background: #ffffff;
+	border: 0.45rem solid #1d1d1f;
+	border-radius: 2.25rem;
+	box-shadow: var(--platen-shadow);
+	position: relative;
+	overflow: hidden;
+}
+
+	/* The camera cut-out at the top of the screen. */
+	.platen-phone::before {
+		content: "";
+		position: absolute;
+		top: 0.5rem;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 3.6rem;
+		height: 1rem;
+		border-radius: 0.5rem;
+		background: #1d1d1f;
+	}
+
+	.platen-phone .platen-book {
+		padding: 2.75rem 1.1rem 1rem 1.1rem;
+		font-size: 0.8rem;
+	}
+
+		/* Verse dialogue: flush left with a hanging indent, as printed plays
+		   set it. Justifying short spoken lines opens wide gaps. */
+		.platen .platen-phone .platen-book p {
+			margin-bottom: 0.55em;
+			text-align: left;
+			-webkit-hyphens: manual;
+			hyphens: manual;
+			padding-left: 1em;
+			text-indent: -1em;
+		}
+
+		.platen .platen-phone .platen-book .platen-book-heading {
+			margin-bottom: 1em;
+			text-align: center;
+			padding-left: 0;
+			text-indent: 0;
+		}
+
+/* --------------------------------------------------------------------------
+   Three points, side by side. Plain text: no cards or icons.
+   -------------------------------------------------------------------------- */
+
+.platen-features {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 3rem;
+	margin-bottom: 1rem;
+}
+
+	.platen .platen-features h2 {
+		font-size: 1.15rem;
+		line-height: 1.5;
+		margin: 0 0 0.75rem 0;
+	}
+
+	.platen .platen-features p {
+		margin: 0;
+	}
+
+/* --------------------------------------------------------------------------
+   Note on DRM, and the links row.
+   -------------------------------------------------------------------------- */
+
+.platen .platen-note {
+	color: var(--platen-muted);
+	max-width: 42rem;
+	margin: 0 auto 2rem auto;
+	text-align: center;
+}
+
+.platen .platen-links {
+	text-align: center;
+	font-size: 0.9rem;
+	margin: 0;
+}
+
+	.platen-links .platen-sep {
+		color: var(--platen-muted);
+		margin: 0 0.6rem;
+	}
+
+/* --------------------------------------------------------------------------
+   Privacy and support: one reading column, as on the essay pages.
+   -------------------------------------------------------------------------- */
+
+.platen-column > * {
+	max-width: 42rem;
+}
+
+.platen .platen-back {
+	font-size: 0.9rem;
+	margin-bottom: 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   Narrower screens.
+   -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 980px) {
+
+	.platen-shots {
+		gap: 2rem;
+	}
+
+	.platen-mac .platen-book {
+		padding: 2.25rem 2.5rem 2.5rem 2.5rem;
+	}
+
+	.platen-phone {
+		width: 11.5rem;
+	}
+
+	.platen-features {
+		grid-template-columns: minmax(0, 1fr);
+		gap: 2rem;
+	}
+
+}
+
+@media screen and (max-width: 736px) {
+
+	.platen {
+		padding-top: 3.5rem;
+	}
+
+	/* The phone moves below the window. */
+	.platen-shots {
+		flex-direction: column;
+		align-items: center;
+		gap: 3rem;
+		margin: 3.5rem 0;
+	}
+
+	.platen-mac {
+		width: 100%;
+	}
+
+		.platen-mac .platen-book {
+			padding: 1.5rem 1.4rem 1.75rem 1.4rem;
+			font-size: 1rem;
+		}
+
+	.platen-phone {
+		width: 12.5rem;
+	}
+
+}
