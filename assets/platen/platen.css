@@ -270,6 +270,12 @@
 	max-width: 42rem;
 }
 
+/* A link to a section (such as the app's link to support/#drm) stops
+   below the site's fixed header bar instead of underneath it. */
+.platen [id] {
+	scroll-margin-top: 5rem;
+}
+
 .platen .platen-back {
 	font-size: 0.9rem;
 	margin-bottom: 2rem;
