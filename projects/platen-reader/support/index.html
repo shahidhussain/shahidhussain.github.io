@@ -1,0 +1,65 @@
+---
+# ============================================================================
+#  Platen Reader support. Serves at /projects/platen-reader/support/.
+#
+#  The "Books that won't open" section (#drm) is the guide the app links to
+#  when someone opens a DRM-protected book, so keep both the URL and the
+#  `id="drm"` anchor. It's written for someone who has never heard of DRM.
+#
+#  One reading column, like the essays. Styles: /assets/platen/platen.css.
+# ============================================================================
+layout: default
+permalink: /projects/platen-reader/support/
+title: Platen Reader support
+description: "Get help with Platen Reader: report a bug or a book that doesn't look right, and find out why some bought books won't open."
+image: /assets/platen/icon.png
+---
+<link rel="stylesheet" href="{{ '/assets/platen/platen.css' | relative_url }}" />
+
+<section class="wrapper style1 platen" lang="en-GB">
+	<div class="inner platen-column">
+
+		<p class="platen-back"><a href="{{ '/projects/platen-reader/' | relative_url }}">&larr; Platen Reader</a></p>
+
+		<header class="major">
+			<h1>Support</h1>
+		</header>
+
+		<h2>Report a problem</h2>
+
+		<p>Found a bug, or a book that doesn&rsquo;t look right? Email <a href="mailto:platen-reader@shahidhussain.com">platen-reader@shahidhussain.com</a>, and attach the file if you can. Odd books make the most useful reports.</p>
+
+		<p>If a book won&rsquo;t open, the app shows a <strong>Report This Book</strong> button. It writes the email for you, with details that help track down the problem. You see the email before it&rsquo;s sent.</p>
+
+		<p>If you use GitHub, you can also open an issue at <a href="https://github.com/shahidhussain/platen-reader/issues">github.com/shahidhussain/platen-reader/issues</a>.</p>
+
+		<h2 id="drm">Books that won&rsquo;t open because of DRM</h2>
+
+		<p>If Platen says a book is &ldquo;protected by DRM&rdquo;, nothing is wrong with your book or with the app. The book has a lock on it.</p>
+
+		<h3>What DRM is</h3>
+
+		<p>DRM stands for digital rights management. Many shops put it on the ebooks they sell, so that the book only opens in their own app. It works like a key that only that app has. Without the key, the file can&rsquo;t be read.</p>
+
+		<p>So a book bought from Kindle opens in the Kindle app, and a book bought from Apple Books opens in Apple Books. Library loans are often locked the same way, to the library&rsquo;s app or to Adobe Digital Editions.</p>
+
+		<h3>Why Platen can&rsquo;t open it</h3>
+
+		<p>Platen doesn&rsquo;t have the key, and it won&rsquo;t try to get round the lock. Breaking DRM is against the law in many countries and against the shop&rsquo;s terms. Platen tells you which lock it found, so you know where the book will open.</p>
+
+		<h3>What you can do</h3>
+
+		<ul>
+			<li><strong>Read it in the app it came from.</strong> Kindle books open in the Kindle app, Apple Books in Apple Books, and library loans in the library&rsquo;s app.</li>
+			<li><strong>Look for DRM-free books when you buy.</strong> Some shops and publishers sell books without DRM, and many say so on the book&rsquo;s page. Those open in Platen.</li>
+			<li><strong>Try a free library of DRM-free books.</strong> <a href="https://standardebooks.org/">Standard Ebooks</a> and <a href="https://www.gutenberg.org/">Project Gutenberg</a> have thousands of classics, free to download and read anywhere.</li>
+		</ul>
+
+		<p>Think Platen has got it wrong, and the book has no DRM? <a href="mailto:platen-reader@shahidhussain.com">Email the file</a> and it&rsquo;ll be looked into.</p>
+
+		<h2>Privacy</h2>
+
+		<p>Platen collects nothing about you or what you read. Read the <a href="{{ '/projects/platen-reader/privacy/' | relative_url }}">privacy policy</a>.</p>
+
+	</div>
+</section>

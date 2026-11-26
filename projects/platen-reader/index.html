@@ -4,7 +4,7 @@
 #
 #  Uses `layout: default` (like /writing/all/) because the page supplies its
 #  own section markup. Its styles live in /assets/platen/platen.css, scoped
-#  under `.platen`, and are loaded by this page and the privacy page only.
+#  under `.platen`, and are loaded by this page and its privacy and support pages only.
 #
 #  `image` is the link-preview picture (og:image), via jekyll-seo-tag.
 # ============================================================================
@@ -82,12 +82,12 @@ image: /assets/platen/icon.png
 
 		<hr class="major" />
 
-		<p class="platen-note">Platen opens DRM-free EPUB files. Books bought from Kindle or Apple Books can&rsquo;t be opened. Looking for something to read? <a href="https://standardebooks.org/">Standard Ebooks</a> and <a href="https://www.gutenberg.org/">Project Gutenberg</a> have thousands of free, DRM-free books that open in Platen.</p>
+		<p class="platen-note">Platen opens DRM-free EPUB files. Books bought from Kindle or Apple Books can&rsquo;t be opened (<a href="{{ '/projects/platen-reader/support/#drm' | relative_url }}">here&rsquo;s why</a>). Looking for something to read? <a href="https://standardebooks.org/">Standard Ebooks</a> and <a href="https://www.gutenberg.org/">Project Gutenberg</a> have thousands of free, DRM-free books that open in Platen.</p>
 
 		<p class="platen-links">
 			<a href="https://github.com/shahidhussain/platen-reader">Source code on GitHub</a><span class="platen-sep" aria-hidden="true">&middot;</span>
 			<a href="{{ '/projects/platen-reader/privacy/' | relative_url }}">Privacy</a><span class="platen-sep" aria-hidden="true">&middot;</span>
-			<a href="mailto:platen-reader@shahidhussain.com">Support</a>
+			<a href="{{ '/projects/platen-reader/support/' | relative_url }}">Support</a>
 		</p>
 
 	</div>

@@ -23,7 +23,7 @@ them, so a change to the nav is a one-line edit rather than a find-and-replace.
 | `writing/all/index.html` | `/writing/all/` — the index of every essay. Never needs editing. |
 | `index.html` | Homepage, served at `/` |
 | `projects/index.html` | `/projects/` — the list of projects (the Projects nav item) |
-| `projects/platen-reader/` | Platen Reader page and its privacy page; styles in `assets/platen/platen.css` |
+| `projects/platen-reader/` | Platen Reader page, its privacy page and its support page (whose `#drm` section the app links to); styles in `assets/platen/platen.css` |
 | `projects/zoe-and-zephy/index.html` | Book page, served at `/projects/zoe-and-zephy/`. The old `/zoe-and-zephy/` forwards to it (`redirect_from`); its images and PDF stay under `zoe-and-zephy/` |
 | `assets/` | The Hyperbolic theme (CSS, JS, fonts) — **do not edit `main.css`** |
 | `assets/css/custom.css` | All local styling changes go here |
