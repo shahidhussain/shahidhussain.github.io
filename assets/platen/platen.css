@@ -270,6 +270,12 @@
 	max-width: 42rem;
 }
 
+/* Example addresses (smb://...) stay on one line instead of breaking at
+   a hyphen. */
+.platen code {
+	white-space: nowrap;
+}
+
 /* A link to a section (such as the app's link to support/#drm) stops
    below the site's fixed header bar instead of underneath it. */
 .platen [id] {
