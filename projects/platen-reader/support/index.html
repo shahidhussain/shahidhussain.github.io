@@ -6,12 +6,14 @@
 #  when someone opens a DRM-protected book, so keep both the URL and the
 #  `id="drm"` anchor. It's written for someone who has never heard of DRM.
 #
+#  The network drive guide (#network-drive) can be linked from the app too.
+#
 #  One reading column, like the essays. Styles: /assets/platen/platen.css.
 # ============================================================================
 layout: default
 permalink: /projects/platen-reader/support/
 title: Platen Reader support
-description: "Get help with Platen Reader: report a bug or a book that doesn't look right, and find out why some bought books won't open."
+description: "Get help with Platen Reader: report a bug, read books from a network drive on iPhone or iPad, and find out why some bought books won't open."
 image: /assets/platen/icon.png
 ---
 <link rel="stylesheet" href="{{ '/assets/platen/platen.css' | relative_url }}" />
@@ -32,6 +34,36 @@ image: /assets/platen/icon.png
 		<p>If a book won&rsquo;t open, the app shows a <strong>Report This Book</strong> button. It writes the email for you, with details that help track down the problem. You see the email before it&rsquo;s sent.</p>
 
 		<p>If you use GitHub, you can also open an issue at <a href="https://github.com/shahidhussain/platen-reader/issues">github.com/shahidhussain/platen-reader/issues</a>.</p>
+
+		<h2 id="network-drive">Reading books from a network drive on iPhone or iPad</h2>
+
+		<p>If your books are on a network drive, such as a home server or a shared folder on another computer, you can read them in Platen. First you tell your iPhone or iPad where the drive is, using Apple&rsquo;s Files app. You only need to do this once.</p>
+
+		<p>Before you start, have the drive&rsquo;s address to hand, and its user name and password if it has one. The address often looks like <code>smb://192.168.1.20</code> or <code>smb://my-server.local</code>.</p>
+
+		<h3>Connect to the drive in Files</h3>
+
+		<ol>
+			<li>Leave Platen and open the <strong>Files</strong> app.</li>
+			<li>Tap <strong>Browse</strong> at the bottom of the screen.</li>
+			<li>Tap the <strong>&hellip;</strong> button at the top right, then <strong>Connect to Server</strong>.</li>
+			<li>Type the drive&rsquo;s address and tap <strong>Connect</strong>.</li>
+			<li>Choose <strong>Registered User</strong>, enter the user name and password, and tap <strong>Next</strong>. (If the drive has no password, choose <strong>Guest</strong>.)</li>
+		</ol>
+
+		<p>The drive now shows up in Files under <strong>Shared</strong>.</p>
+
+		<h3>Add the folder to Platen</h3>
+
+		<ol>
+			<li>Go back to Platen and open the <strong>Home</strong> tab.</li>
+			<li>Tap <strong>+</strong> at the top right, or <strong>Choose Folder&hellip;</strong> if you haven&rsquo;t added any folders yet.</li>
+			<li>Find your drive under <strong>Shared</strong>, open the folder your books are in, and tap <strong>Open</strong>.</li>
+		</ol>
+
+		<p>The folder now stays on Platen&rsquo;s Home tab, so next time you can go straight to it. Your books stay on the drive: Platen reads them from there and doesn&rsquo;t copy them.</p>
+
+		<p>On a Mac, connect to the drive in Finder as you normally would, then open books from there.</p>
 
 		<h2 id="drm">Books that won&rsquo;t open because of DRM</h2>
 
